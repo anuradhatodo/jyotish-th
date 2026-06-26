@@ -10,27 +10,32 @@
         body { font-family: 'Kanit', sans-serif; margin: 0; background-color: var(--white); color: #333; line-height: 1.6; }
         .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
         
+        /* Hero Section */
         .hero { background: linear-gradient(135deg, var(--deep-blue), #1e293b); color: var(--white); padding: 80px 20px; text-align: center; }
         h1 { font-size: 2.5rem; margin-bottom: 20px; line-height: 1.2; }
         .hero p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; }
         .cta-btn { background: var(--gold); color: var(--deep-blue); padding: 18px 40px; font-size: 1.2rem; font-weight: 700; border-radius: 50px; text-decoration: none; display: inline-block; transition: transform 0.3s; }
         .cta-btn:hover { transform: scale(1.05); }
 
+        /* Sections */
         .section { padding: 60px 0; }
         h2 { text-align: center; color: var(--deep-blue); font-size: 2rem; margin-bottom: 40px; }
         
-        /* Screenshots */
-        .sc-gallery { display: flex; overflow-x: auto; gap: 15px; padding-bottom: 20px; }
-        .sc-gallery img { height: 300px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .sc-full { width: 100%; border-radius: 15px; margin-top: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-
-        /* Sample PDF Link */
-        .pdf-box { text-align: center; margin-top: 30px; }
-        .pdf-link { color: var(--gold); font-weight: bold; text-decoration: underline; font-size: 1.1rem; }
-
+        /* Problem Cards */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         .card { background: #f8fafc; padding: 25px; border-radius: 15px; border: 1px solid #e2e8f0; text-align: center; }
+        
+        /* Screenshots Section (Added) */
+        .sc-gallery { display: flex; overflow-x: auto; gap: 15px; padding-bottom: 20px; margin-bottom: 20px; }
+        .sc-gallery img { height: 300px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .sc-full { width: 100%; border-radius: 15px; margin-top: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .pdf-box { text-align: center; margin: 30px 0; }
+        .pdf-link { color: var(--gold); font-weight: bold; text-decoration: underline; font-size: 1.1rem; }
+
+        /* AI Section */
         .ai-box { background: var(--deep-blue); color: var(--white); padding: 40px; border-radius: 20px; text-align: center; }
+        
+        /* Trust & About */
         .trust { text-align: center; background: #fffbf0; padding: 40px; border-radius: 20px; border: 1px solid var(--gold); }
         
         @media (max-width: 768px) { h1 { font-size: 1.8rem; } }
@@ -55,6 +60,7 @@
             </div>
         </section>
 
+        <!-- 追加部分：スクリーンショットとPDF -->
         <section class="section">
             <h2>ภาพตัวอย่างการใช้งาน</h2>
             <div class="sc-gallery">
@@ -65,11 +71,8 @@
             </div>
             <img src="sc-PDF1.png" alt="PDF Analysis" class="sc-full">
             <img src="sc-mail.png" alt="Email Report" class="sc-full">
-            
             <div class="pdf-box">
-                <a href="https://drive.google.com/file/d/15uv755RzFNNwFOxfUq4SSOApueuFyvJV/view?usp=sharing" target="_blank" class="pdf-link">
-                    ดูตัวอย่างรายงานผลลัพธ์ฉบับเต็ม (PDF)
-                </a>
+                <a href="https://drive.google.com/file/d/15uv755RzFNNwFOxfUq4SSOApueuFyvJV/view?usp=sharing" target="_blank" class="pdf-link">ดูตัวอย่างรายงานผลลัพธ์ฉบับเต็ม (PDF)</a>
             </div>
         </section>
 
