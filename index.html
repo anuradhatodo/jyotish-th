@@ -1,48 +1,83 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Veda Center</title>
-<style>
-body{font-family:sans-serif;margin:0;background:#f4f4f9;color:#333;line-height:1.6;}
-header{background:#000;width:100%;}
-header img{width:100%;height:auto;display:block;}
-.container{max-width:1000px;margin:0 auto;padding:0 20px;}
-.content-wrapper{display:flex;flex-wrap:wrap;gap:20px;padding:40px 20px;}
-.main-text{flex:3;min-width:300px;}
-.download-section{flex:1;min-width:250px;background:#fff;padding:20px;border-radius:15px;text-align:center;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
-.app-icon{width:60px;margin-bottom:10px;border-radius:12px;}
-.download-button{display:block;margin:10px auto;max-width:150px;}
-.download-button img{width:100%;}
-.details-section{padding:40px 20px;text-align:center;}
-.details-section img{width:100%;max-width:700px;border-radius:15px;}
-footer{text-align:center;padding:20px;background:#333;color:#fff;}
-footer a{color:#d4af37;}
-@media(max-width:768px){.content-wrapper{flex-direction:column;}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veda Center - แอปโหราศาสตร์เวทอินเดีย (Jyotish)</title>
+    <style>
+        body { font-family: 'Krub', sans-serif; margin: 0; background-color: #f4f4f9; color: #333; line-height: 1.6; }
+        
+        /* ヘッダー画像：スマホで画面幅いっぱいに */
+        header { background-color: #000; padding: 0; text-align: center; }
+        header img { width: 100%; height: auto; display: block; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; box-sizing: border-box; }
+
+        h1 { font-size: 2rem; color: #4b0082; font-weight: 700; margin-bottom: 20px; }
+        h2 { font-size: 1.4rem; color: #d4af37; margin-top: 20px; }
+
+        /* コンテンツエリア */
+        .content-wrapper { display: flex; flex-wrap: wrap; gap: 30px; padding: 40px 0; }
+        .main-text { flex: 2; min-width: 300px; }
+        
+        /* ダウンロードセクション：アイコンとボタンのサイズ制限 */
+        .download-section { 
+            flex: 1; min-width: 250px; background-color: #fff; 
+            padding: 20px; border-radius: 15px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; 
+        }
+        .app-icon { width: 60px !important; height: auto; margin-bottom: 10px; border-radius: 12px; }
+        .download-button img { max-width: 150px !important; width: 100%; height: auto; margin-top: 10px; display: block; margin: 10px auto; }
+
+        /* 詳細画像 */
+        .details-section { padding: 40px 0; text-align: center; }
+        .details-section img { width: 100%; max-width: 800px; border-radius: 15px; }
+
+        footer { background-color: #333; color: #fff; text-align: center; padding: 20px 0; }
+        footer a { color: #d4af37; text-decoration: none; }
+
+        /* レスポンシブ対応：スマホで縦並びに */
+        @media (max-width: 768px) {
+            .content-wrapper { flex-direction: column; }
+            h1 { font-size: 1.5rem; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<header><img src="header-visual.png" alt="Main Visual"></header>
-<main>
-<div class="container content-wrapper">
-<div class="main-text">
-<h1>เปิดรหัสลับแห่งชีวิต: ปลดล็อกความสำเร็จ</h1>
-<p>สัมผัสภูมิปัญญาเวทโบราณ ผ่านการวิเคราะห์ AI ที่แม่นยำที่สุด</p>
-</div>
-<div class="download-section">
-<img src="app-icon.png" alt="Icon" class="app-icon">
-<h2>ดาวน์โหลดเลย!</h2>
-<a href="https://vedacenter.jp/jyotish-th/" class="download-button"><img src="download-ios.png" alt="iOS"></a>
-<a href="https://vedacenter.jp/jyotish-th/" class="download-button"><img src="download-android.png" alt="Android"></a>
-</div>
-</div>
-<section class="details-section container">
-<img src="jyotish-th-2.png" alt="Details">
-</section>
-</main>
-<footer>
-<p><a href="legal.html">ข้อมูลทางกฎหมาย</a> &copy; 2024 OFFICE TODO</p>
-</footer>
+
+    <header>
+        <img src="header-visual.png" alt="Main Visual">
+    </header>
+
+    <main class="container">
+        <div class="content-wrapper">
+            <div class="main-text">
+                <h1>เปิดรหัสลับแห่งชีวิต: ปลดล็อกความสำเร็จ</h1>
+                <p>สัมผัสภูมิปัญญาเวทโบราณ ผ่านการวิเคราะห์ AI ที่แม่นยำที่สุด</p>
+                <h2>คุณสมบัติเด่น:</h2>
+                <ul>
+                    <li>วิเคราะห์ดวงชะตาเวทอย่างละเอียด (Jyotish Chart)</li>
+                    <li>ทำนายดวงรายวัน รายสัปดาห์ รายเดือน</li>
+                    <li>เจาะลึกเรื่องความรัก การงาน และการเงิน</li>
+                </ul>
+            </div>
+            <div class="download-section">
+                <img src="app-icon.png" alt="App Icon" class="app-icon">
+                <h2>ดาวน์โหลดเลย!</h2>
+                <a href="#"><img src="download-ios.png" alt="iOS" class="download-button"></a>
+                <a href="#"><img src="download-android.png" alt="Android" class="download-button"></a>
+            </div>
+        </div>
+
+        <section class="details-section">
+            <img src="jyotish-th-2.png" alt="Details">
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Veda Center. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
