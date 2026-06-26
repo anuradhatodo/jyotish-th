@@ -8,7 +8,7 @@
         body { font-family: 'Krub', sans-serif; margin: 0; background-color: #f4f4f9; color: #333; line-height: 1.6; }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; box-sizing: border-box; }
         
-        /* 以前の横並びレイアウトを復元 */
+        /* メインレイアウト */
         .content-wrapper { display: flex; flex-wrap: wrap; gap: 30px; padding: 40px 0; }
         .main-text { flex: 2; min-width: 300px; }
         .download-section { flex: 1; min-width: 250px; background-color: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; }
@@ -16,11 +16,15 @@
         .download-button { display: block; margin: 12px auto; max-width: 180px; }
         .download-button img { width: 100%; height: auto; }
 
-        /* スクリーンショット用スタイル */
+        /* スクリーンショットセクション（最後に追加） */
+        .sc-section { padding: 40px 0; border-top: 2px solid #ddd; }
         .sc-gallery { display: flex; overflow-x: auto; gap: 15px; padding: 20px 0; }
-        .sc-gallery img { height: 300px; border-radius: 10px; }
-        .sc-full { width: 100%; border-radius: 10px; margin-top: 15px; }
-        .pdf-link-box { text-align: center; padding: 20px; }
+        .sc-gallery img { height: 300px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .sc-sample { display: flex; gap: 15px; justify-content: center; margin-top: 20px; }
+        .sc-sample img { height: 300px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        
+        .pdf-link-box { text-align: center; margin-top: 20px; }
+        .pdf-link { font-weight: bold; color: #4b0082; text-decoration: underline; }
 
         @media (max-width: 768px) { .content-wrapper { flex-direction: column; } }
     </style>
@@ -32,7 +36,13 @@
         <div class="content-wrapper">
             <div class="main-text">
                 <h1>เปิดรหัสลับแห่งชีวิต: ปลดล็อกความสำเร็จด้วยโหราศาสตร์เวท</h1>
-                <p>สัมผัสภูมิปัญญาเวทโบราณที่แม่นยำที่สุดผ่านระบบ AI อัจฉริยะ</p>
+                <p>สัมผัสภูมิปัญญาเวทโบราณที่แม่นยำที่สุดผ่านระบบ AI อัจฉริยะ เข้าใจดวงชะตาของคุณได้ง่ายๆ ในทุกมิติชีวิต</p>
+                <h2>ทำไมต้อง Veda Center?</h2>
+                <ul>
+                    <li>วิเคราะห์แม่นยำ: เจาะลึกดวงชะตาเวทอย่างละเอียด พร้อมคำแนะนำ</li>
+                    <li>ครบทุกเรื่อง: ความรัก การงาน การเงิน และสุขภาพ</li>
+                    <li>ใช้งานง่าย: ระบบ AI วิเคราะห์และสรุปผลให้ทันที</li>
+                </ul>
             </div>
             <div class="download-section">
                 <h2>ดาวน์โหลดเลย!</h2>
@@ -42,15 +52,21 @@
             </div>
         </div>
 
-        <section>
-            <h2>ภาพตัวอย่างการใช้งาน</h2>
+        <section class="sc-section">
+            <h2>ภาพตัวอย่างการใช้งานและผลลัพธ์</h2>
             <div class="sc-gallery">
-                <img src="sc-1.jpg" alt="UI"><img src="sc-2.png" alt="UI"><img src="sc-3.jpg" alt="UI"><img src="sc-4.png" alt="UI">
+                <img src="sc-1.jpg" alt="UI 1"><img src="sc-2.png" alt="UI 2"><img src="sc-3.jpg" alt="UI 3"><img src="sc-4.png" alt="UI 4">
             </div>
-            <img src="sc-PDF1.png" alt="PDF" class="sc-full">
-            <img src="sc-mail.png" alt="Mail" class="sc-full">
+            
+            <div class="sc-sample">
+                <img src="sc-PDF1.png" alt="PDF Sample">
+                <img src="sc-mail.png" alt="Mail Sample">
+            </div>
+            
             <div class="pdf-link-box">
-                <a href="https://drive.google.com/file/d/15uv755RzFNNwFOxfUq4SSOApueuFyvJV/view?usp=sharing" target="_blank">ดูตัวอย่างรายงานผลลัพธ์ฉบับเต็ม (PDF)</a>
+                <a href="https://drive.google.com/file/d/15uv755RzFNNwFOxfUq4SSOApueuFyvJV/view?usp=sharing" target="_blank" class="pdf-link">
+                    ดูตัวอย่างรายงานผลลัพธ์ฉบับเต็ม (PDF)
+                </a>
             </div>
         </section>
     </main>
