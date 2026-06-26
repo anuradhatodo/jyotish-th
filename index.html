@@ -16,41 +16,41 @@ body{font-family:'Sarabun',sans-serif;background:#0f0b1f;color:#e8e0f0;line-heig
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 30%,#1a0a3a 0%,#0f0b1f 60%),radial-gradient(ellipse at 80% 70%,#0a1a2e 0%,transparent 60%);z-index:-1}
 .container{max-width:1040px;margin:0 auto;padding:0 20px}
 
-/* Header */
+/* ===== Header ===== */
 .site-header{width:100%;overflow:hidden}
 .site-header img{width:100%;height:auto;display:block;object-fit:cover;max-height:420px}
 
-/* Hero */
+/* ===== Hero ===== */
 .hero{text-align:center;padding:60px 20px 50px}
-.hero-badge{display:inline-block;background:rgba(212,175,55,0.15);border:1px solid #d4af37;color:#d4af37;font-size:13px;font-weight:600;padding:6px 18px;border-radius:50px;margin-bottom:20px;letter-spacing:0.05em}
-.hero h1{font-size:clamp(26px,5vw,44px);font-weight:700;line-height:1.35;color:#fff;margin-bottom:20px}
+.hero-badge{display:inline-block;background:rgba(212,175,55,0.15);border:1px solid #d4af37;color:#d4af37;font-size:13px;font-weight:600;padding:6px 18px;border-radius:50px;margin-bottom:20px;letter-spacing:.05em}
+.hero h1{font-size:clamp(24px,5vw,44px);font-weight:700;line-height:1.35;color:#fff;margin-bottom:20px}
 .hero h1 span{color:#d4af37}
-.hero p{font-size:17px;color:#c0b8d8;max-width:620px;margin:0 auto 36px;font-weight:300}
+.hero p{font-size:16px;color:#c0b8d8;max-width:620px;margin:0 auto 36px;font-weight:300}
 .cta-group{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:16px}
 .btn-primary{display:inline-flex;align-items:center;gap:8px;background:#d4af37;color:#0f0b1f;font-size:16px;font-weight:700;padding:14px 32px;border-radius:50px;text-decoration:none;transition:transform .2s,box-shadow .2s;white-space:nowrap}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,175,55,.35)}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);color:#e8e0f0;font-size:15px;font-weight:600;padding:13px 28px;border-radius:50px;border:1px solid rgba(255,255,255,0.2);text-decoration:none;transition:background .2s,transform .2s}
-.btn-secondary:hover{background:rgba(255,255,255,0.14);transform:translateY(-2px)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);color:#e8e0f0;font-size:15px;font-weight:600;padding:13px 28px;border-radius:50px;border:1px solid rgba(255,255,255,.2);text-decoration:none;transition:background .2s,transform .2s}
+.btn-secondary:hover{background:rgba(255,255,255,.14);transform:translateY(-2px)}
 .hero-note{font-size:12px;color:#7a7090;margin-top:6px}
 
-/* Section共通 */
+/* ===== Section共通 ===== */
 .section-label{text-align:center;font-size:12px;font-weight:600;letter-spacing:.12em;color:#d4af37;text-transform:uppercase;margin-bottom:12px}
-.section-title{text-align:center;font-size:clamp(22px,3.5vw,32px);font-weight:700;color:#fff;margin-bottom:10px}
+.section-title{text-align:center;font-size:clamp(20px,3.5vw,32px);font-weight:700;color:#fff;margin-bottom:10px}
 .section-sub{text-align:center;color:#9a90b8;font-size:15px;margin-bottom:48px;font-weight:300}
 
-/* Features */
+/* ===== Features ===== */
 .features{padding:60px 0}
-.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
-.feature-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px 24px;transition:transform .2s,border-color .2s}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.feature-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px 24px;transition:transform .2s,border-color .2s}
 .feature-card:hover{transform:translateY(-4px);border-color:rgba(212,175,55,.4)}
 .feature-icon{font-size:32px;margin-bottom:14px;display:block}
 .feature-card h3{font-size:17px;font-weight:700;color:#fff;margin-bottom:10px}
 .feature-card p{font-size:14px;color:#9a90b8;line-height:1.7}
 
-/* Plans */
+/* ===== Plans (3プランのみ) ===== */
 .plans{padding:60px 0}
-.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:40px}
-.plan-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px 22px;position:relative}
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:40px}
+.plan-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px 22px;position:relative}
 .plan-card.popular{border-color:#d4af37;background:rgba(212,175,55,.06)}
 .popular-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#d4af37;color:#0f0b1f;font-size:11px;font-weight:700;padding:4px 16px;border-radius:50px;white-space:nowrap}
 .plan-name{font-size:14px;font-weight:600;color:#9a90b8;letter-spacing:.05em;margin-bottom:8px}
@@ -61,45 +61,93 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .plan-features li{font-size:13px;color:#c0b8d8;padding:5px 0;display:flex;align-items:flex-start;gap:8px}
 .plan-features li::before{content:'✦';color:#d4af37;font-size:11px;margin-top:3px;flex-shrink:0}
 
-/* Screenshots */
+/* ===== วิธีชำระเงิน section ===== */
+.payment{padding:60px 0}
+
+/* 支払い方法2択 */
+.pay-methods{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-bottom:40px}
+.pay-method-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px}
+.pay-method-card.pay-method-gpay{border-color:rgba(66,133,244,.4);background:rgba(66,133,244,.06)}
+.pay-method-icon{font-size:22px;font-weight:700;margin-bottom:12px;color:#4285f4}
+.pay-method-card h3{font-size:16px;font-weight:700;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pay-method-card p{font-size:13px;color:#9a90b8;line-height:1.8}
+.pay-badge{font-size:10px;background:#d4af37;color:#0f0b1f;padding:3px 10px;border-radius:50px;font-weight:700;white-space:nowrap}
+
+/* ステップ */
+.payment-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-bottom:40px}
+.payment-step{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:#d4af37;color:#0f0b1f;font-weight:700;font-size:15px;border-radius:50%;margin-bottom:14px;flex-shrink:0}
+.payment-step h3{font-size:15px;font-weight:700;color:#fff;margin-bottom:8px}
+.payment-step p{font-size:13px;color:#9a90b8;line-height:1.8}
+
+/* 決済画面イメージ */
+.checkout-preview{background:rgba(212,175,55,.05);border:1px solid rgba(212,175,55,.2);border-radius:20px;padding:32px;max-width:480px;margin:0 auto}
+.checkout-preview h3{font-size:16px;font-weight:700;color:#d4af37;margin-bottom:6px}
+.checkout-preview .note{font-size:12px;color:rgba(255,240,200,.55);margin-bottom:20px;line-height:1.6}
+.form-mock{background:#fff;border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.form-mock-label{font-size:11px;font-weight:700;color:#111;margin-bottom:4px}
+.form-mock-field{border:1px solid #ccc;border-radius:6px;padding:8px 10px;color:#999;font-size:12px;margin-bottom:12px;font-family:'Sarabun',sans-serif}
+.form-mock-hint{color:#d4af37;font-weight:700;font-size:12px}
+.form-mock-row{display:flex;gap:8px;margin-bottom:4px}
+.form-mock-row .form-mock-field{flex:1;margin-bottom:0}
+.form-mock-btn{background:#2d3748;color:#fff;text-align:center;padding:10px;border-radius:6px;font-size:13px;font-weight:700;margin-top:4px}
+.checkout-note{background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.25);border-radius:10px;padding:12px 16px;font-size:13px;color:#e8d8a0;line-height:1.8}
+
+/* ===== Screenshots ===== */
 .screenshots{padding:60px 0}
 .sc-scroll{display:flex;gap:16px;overflow-x:auto;padding:8px 4px 20px;scrollbar-width:thin;scrollbar-color:#3a2f5a transparent;-webkit-overflow-scrolling:touch}
 .sc-scroll::-webkit-scrollbar{height:4px}
 .sc-scroll::-webkit-scrollbar-thumb{background:#3a2f5a;border-radius:4px}
-.sc-scroll img{height:280px;width:auto;flex-shrink:0;border-radius:12px;border:1px solid rgba(255,255,255,0.1);object-fit:cover}
+.sc-scroll img{height:260px;width:auto;flex-shrink:0;border-radius:12px;border:1px solid rgba(255,255,255,.1);object-fit:cover}
 
-/* PDF CTA */
-.pdf-cta{text-align:center;padding:40px 20px;background:rgba(212,175,55,.05);border:1px solid rgba(212,175,55,.2);border-radius:20px;margin:40px 0 60px}
+/* ===== PDF CTA ===== */
+.pdf-cta{text-align:center;padding:36px 20px;background:rgba(212,175,55,.05);border:1px solid rgba(212,175,55,.2);border-radius:20px;margin:40px 0 60px}
 .pdf-cta h3{font-size:20px;font-weight:700;color:#fff;margin-bottom:10px}
 .pdf-cta p{font-size:14px;color:#9a90b8;margin-bottom:24px}
 
-/* Download */
+/* ===== Download ===== */
 .download{padding:70px 0;text-align:center;background:rgba(255,255,255,.02);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
-.download h2{font-size:clamp(22px,3.5vw,32px);font-weight:700;color:#fff;margin-bottom:12px}
+.download h2{font-size:clamp(20px,3.5vw,32px);font-weight:700;color:#fff;margin-bottom:12px}
 .download p{color:#9a90b8;font-size:15px;margin-bottom:36px}
 .store-buttons{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
-.store-btn{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18);border-radius:12px;padding:12px 24px;text-decoration:none;color:#fff;font-size:14px;font-weight:600;transition:background .2s,transform .2s;min-width:180px}
-.store-btn:hover{background:rgba(255,255,255,0.12);transform:translateY(-2px)}
+.store-btn{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 24px;text-decoration:none;color:#fff;font-size:14px;font-weight:600;transition:background .2s,transform .2s;min-width:160px}
+.store-btn:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
 .store-btn .store-icon{font-size:26px;line-height:1}
 .store-btn .store-text{text-align:left}
 .store-btn .store-sub{display:block;font-size:10px;font-weight:400;color:#9a90b8}
 .store-btn .store-name{display:block;font-size:15px;font-weight:700}
 
-/* Footer */
+/* ===== Footer ===== */
 footer{text-align:center;padding:32px 20px;color:#4a4060;font-size:13px}
 footer a{color:#6a5e90;text-decoration:none}
 footer a:hover{color:#d4af37}
 
-@media(max-width:640px){
-  .hero{padding:40px 16px 36px}
-  .sc-scroll img{height:220px}
+/* ===== Responsive ===== */
+@media(max-width:768px){
+  .hero{padding:36px 16px 32px}
+  .hero h1{font-size:clamp(22px,6vw,32px)}
+  .btn-primary{padding:12px 24px;font-size:15px}
+  .btn-secondary{padding:11px 20px;font-size:14px}
+  .feature-grid{grid-template-columns:1fr}
+  .plan-grid{grid-template-columns:1fr}
+  .pay-methods{grid-template-columns:1fr}
+  .payment-steps{grid-template-columns:1fr}
+  .sc-scroll img{height:200px}
   .store-btn{min-width:calc(50% - 8px)}
+  .store-buttons{gap:10px}
+  .checkout-preview{padding:20px 16px}
+  .section-sub{font-size:14px;margin-bottom:32px}
+}
+@media(max-width:400px){
+  .store-btn{min-width:100%}
+  .plan-price{font-size:24px}
+  .cta-group{flex-direction:column;align-items:center}
 }
 </style>
 </head>
 <body>
 
-<!-- Header Image（リポジトリの画像を使用） -->
+<!-- Header -->
 <header class="site-header">
   <img src="header-visual.png" alt="Veda Center — โหราศาสตร์เวทอินเดียด้วย AI" width="1200" height="420">
 </header>
@@ -111,12 +159,8 @@ footer a:hover{color:#d4af37}
     <h1>เปิดรหัสแห่งชีวิตด้วย<br><span>ดวงชะตาเวทอินเดีย</span></h1>
     <p>วิเคราะห์ดวงชะตาโหราศาสตร์เวทอย่างลึกซึ้ง ด้วยระบบ AI ที่ผสมผสานภูมิปัญญาพระเวทกับเทคโนโลยีสมัยใหม่</p>
     <div class="cta-group">
-      <a href="https://vedacenter.jp/jyotish-th/" class="btn-primary">
-        🔮 เริ่มวิเคราะห์ดวงชะตา
-      </a>
-      <a href="https://drive.google.com/file/d/15uv755RzFNNwFOxfUq4SSOApueuFyvJV/view?usp=sharing" target="_blank" rel="noopener" class="btn-secondary">
-        📄 ดูตัวอย่างรายงาน PDF
-      </a>
+      <a href="https://vedacenter.jp/jyotish-th/" class="btn-primary">🔮 เริ่มวิเคราะห์ดวงชะตา</a>
+      <a href="https://drive.google.com/file/d/15uv755RzFNNwFOxfUq4SSOApueuFyvJV/view?usp=sharing" target="_blank" rel="noopener" class="btn-secondary">📄 ดูตัวอย่างรายงาน PDF</a>
     </div>
     <p class="hero-note">ฟรีสำหรับการวิเคราะห์เบื้องต้น • ไม่ต้องติดตั้งแอป</p>
   </div>
@@ -137,22 +181,22 @@ footer a:hover{color:#d4af37}
       <div class="feature-card">
         <span class="feature-icon">⏳</span>
         <h3>ระบบ Dasha ที่แม่นยำ</h3>
-        <p>วิเคราะห์ Maha Dasha, Antar Dasha และ Pratyantar ด้วยการคำนวณ Vimshottari ที่ผ่านการตรวจสอบแล้ว</p>
+        <p>วิเคราะห์ Maha Dasha, Antar Dasha ด้วยการคำนวณ Vimshottari ที่ผ่านการตรวจสอบแล้ว พร้อมตารางช่วงเวลา</p>
       </div>
       <div class="feature-card">
         <span class="feature-icon">🤖</span>
-        <h3>AI GPT-4 เฉพาะทาง</h3>
-        <p>AI ที่ฝึกด้วยกฎโหราศาสตร์เวทคลาสสิก ตอบคำถามเฉพาะด้าน ไม่ใช่ทั่วไป — ตอบเป็นภาษาไทยทุกคำตอบ</p>
+        <h3>AI เฉพาะทางโหราศาสตร์เวท</h3>
+        <p>AI ที่ฝึกด้วยกฎโหราศาสตร์เวทคลาสสิก ตอบคำถามเฉพาะด้าน — ตอบเป็นภาษาไทยทุกคำตอบ</p>
       </div>
       <div class="feature-card">
         <span class="feature-icon">💬</span>
         <h3>ถามเพิ่มเติมได้</h3>
-        <p>ระบบรองรับการถามต่อเนื่อง ถามได้ถึง 3 ข้อ พร้อมการวิเคราะห์เพิ่มเติม 1-2 รอบ ตามแพ็กเกจ</p>
+        <p>รองรับการถามต่อเนื่อง ถามได้ถึง 3 ข้อ พร้อมการวิเคราะห์เพิ่มเติม 1–2 รอบตามแพ็กเกจ</p>
       </div>
       <div class="feature-card">
         <span class="feature-icon">📊</span>
         <h3>รายงาน PDF พร้อมพิมพ์</h3>
-        <p>ส่งออกผลการวิเคราะห์เป็น PDF ครบทุกหน้า รวมชาร์ตโหราศาสตร์, ตาราง Dasha และคำแนะนำ</p>
+        <p>ส่งออกผลการวิเคราะห์เป็น PDF ครบทุกหน้า รวมชาร์ตโหราศาสตร์ ตาราง Dasha และคำแนะนำ</p>
       </div>
       <div class="feature-card">
         <span class="feature-icon">📧</span>
@@ -163,13 +207,14 @@ footer a:hover{color:#d4af37}
   </div>
 </section>
 
-<!-- Plans -->
+<!-- Plans（講師用を除いた3プラン） -->
 <section class="plans">
   <div class="container">
     <p class="section-label">แพ็กเกจ</p>
     <h2 class="section-title">เลือกแพ็กเกจที่เหมาะกับคุณ</h2>
     <p class="section-sub">เริ่มต้นฟรี หรืออัปเกรดเพื่อรับการวิเคราะห์เชิงลึก</p>
     <div class="plan-grid">
+
       <div class="plan-card">
         <div class="plan-name">FREE</div>
         <div class="plan-price">฿0</div>
@@ -178,8 +223,10 @@ footer a:hover{color:#d4af37}
           <li>วิเคราะห์จากราศีจันทร์และนักษัตร</li>
           <li>บุคลิกภาพและแนวโน้มชีวิต</li>
           <li>1 ครั้งต่อเซสชัน</li>
+          <li>ไม่ต้องชำระเงิน</li>
         </ul>
       </div>
+
       <div class="plan-card popular">
         <div class="popular-badge">⭐ แนะนำ</div>
         <div class="plan-name">STANDARD</div>
@@ -192,6 +239,7 @@ footer a:hover{color:#d4af37}
           <li>ส่งออก PDF + อีเมล</li>
         </ul>
       </div>
+
       <div class="plan-card">
         <div class="plan-name">PREMIUM</div>
         <div class="plan-price">¥2,970 <span>/ ครั้ง</span></div>
@@ -203,42 +251,133 @@ footer a:hover{color:#d4af37}
           <li>Upaya เบื้องต้น (สี, ทิศ, ตัวเลข)</li>
         </ul>
       </div>
-      <div class="plan-card">
-        <div class="plan-name">PRO / อาจารย์</div>
-        <div class="plan-price">¥3,850 <span>/ ครั้ง</span></div>
-        <div class="plan-desc">ระดับผู้เชี่ยวชาญ รวมการสั่งจ่าย Mantra, Yajna, อัญมณี</div>
-        <ul class="plan-features">
-          <li>ทุกอย่างใน Premium</li>
-          <li>Bija Mantra + Mula Mantra</li>
-          <li>Graha Yajna + อัญมณีแนะนำ</li>
-          <li>บันทึกสำหรับอาจารย์/ผู้สอน</li>
-        </ul>
+
+    </div>
+  </div>
+</section>
+
+<!-- วิธีชำระเงิน -->
+<section class="payment">
+  <div class="container">
+    <p class="section-label">วิธีชำระเงิน</p>
+    <h2 class="section-title">💳 ขั้นตอนการซื้อแพ็กเกจ</h2>
+    <p class="section-sub">หน้าชำระเงินแสดงเป็นภาษาญี่ปุ่น — กรอกได้ง่ายตามคู่มือนี้</p>
+
+    <!-- วิธีชำระเงิน 2 แบบ -->
+    <div class="pay-methods">
+      <div class="pay-method-card pay-method-gpay">
+        <div class="pay-method-icon">G Pay</div>
+        <h3>Google Pay <span class="pay-badge">แนะนำ — เร็วที่สุด</span></h3>
+        <p>กดปุ่ม <strong style="color:#d4af37">Google Pay</strong> ที่แสดงด้านบนหน้าชำระเงิน<br>
+        เลือกบัตรจาก Google Wallet แล้วยืนยัน — เสร็จใน 2 วินาที<br>
+        <span style="font-size:12px;color:#9a90b8">※ ต้องเพิ่มบัตรใน Google Pay ล่วงหน้า</span></p>
+      </div>
+      <div class="pay-method-card">
+        <div class="pay-method-icon">💳</div>
+        <h3>บัตรเครดิต / เดบิต</h3>
+        <p>กรอกข้อมูลบัตรโดยตรงในหน้าชำระเงิน<br>
+        รองรับ Visa, Mastercard, JCB และบัตรส่วนใหญ่</p>
+      </div>
+    </div>
+
+    <!-- ขั้นตอนกรอกข้อมูล -->
+    <div class="payment-steps">
+      <div class="payment-step">
+        <div class="step-num">1</div>
+        <h3>กรอกอีเมล</h3>
+        <p>ช่อง <strong style="color:#d4af37">メールアドレス</strong><br>
+        กรอกอีเมลของคุณ — รหัสผ่านจะส่งมาที่นี่หลังชำระเงิน</p>
+      </div>
+      <div class="payment-step">
+        <div class="step-num">2</div>
+        <h3>เลือกประเทศและกรอกชื่อ</h3>
+        <p>ช่อง <strong style="color:#d4af37">国または地域</strong> → เลือก <strong>Thailand</strong><br>
+        ช่อง <strong style="color:#d4af37">姓</strong> → นามสกุล &nbsp;|&nbsp; <strong style="color:#d4af37">名</strong> → ชื่อ</p>
+      </div>
+      <div class="payment-step">
+        <div class="step-num">3</div>
+        <h3>กรอกที่อยู่</h3>
+        <p>
+          <strong style="color:#d4af37">郵便番号</strong> → รหัสไปรษณีย์ (ใส่ 0000000 ได้)<br>
+          <strong style="color:#d4af37">都道府県</strong> → จังหวัด<br>
+          <strong style="color:#d4af37">市区町村</strong> → เมือง/เขต<br>
+          <strong style="color:#d4af37">住所</strong> → ที่อยู่ (ใส่อะไรก็ได้)
+        </p>
+      </div>
+      <div class="payment-step">
+        <div class="step-num">4</div>
+        <h3>กรอกข้อมูลบัตร แล้วยืนยัน</h3>
+        <p>ช่อง <strong style="color:#d4af37">支払いオプション</strong><br>
+        กรอกหมายเลขบัตร, 月/年 (เดือน/ปี), CVC<br>
+        หากมีรหัส SMS ให้กรอกด้วย<br>
+        แล้วกดปุ่ม <strong style="color:#d4af37">注文を確定</strong></p>
+      </div>
+    </div>
+
+    <!-- 決済画面イメージ -->
+    <div class="checkout-preview">
+      <h3>🖼 ตัวอย่างหน้าชำระเงิน</h3>
+      <p class="note">หน้าชำระเงินแสดงเป็นภาษาญี่ปุ่น — กรอกตามคำอธิบายสีทอง</p>
+
+      <!-- Google Pay -->
+      <div style="background:#000;border-radius:8px;padding:12px;text-align:center;margin-bottom:12px">
+        <span style="color:#fff;font-size:14px;font-weight:700;letter-spacing:.02em">G Pay</span>
+        <span style="color:rgba(255,255,255,.5);font-size:11px;margin-left:8px">← กดที่นี่ถ้าใช้ Google Pay</span>
+      </div>
+      <p style="text-align:center;font-size:11px;color:#666;margin-bottom:12px">— または以下から続行 (หรือกรอกบัตรด้านล่าง) —</p>
+
+      <div class="form-mock">
+        <p style="font-size:10px;color:#666;margin-bottom:8px;border-bottom:1px solid #eee;padding-bottom:4px">連絡先情報</p>
+        <div class="form-mock-field">メールアドレス &nbsp;<span class="form-mock-hint">← กรอกอีเมลของคุณ</span></div>
+
+        <p style="font-size:10px;color:#666;margin:8px 0 4px;border-top:1px solid #eee;padding-top:8px">配送先住所</p>
+        <div class="form-mock-field">国または地域 &nbsp;<span class="form-mock-hint">← เลือก Thailand</span></div>
+        <div class="form-mock-row">
+          <div class="form-mock-field" style="flex:1">姓 <span class="form-mock-hint">← นามสกุล</span></div>
+          <div class="form-mock-field" style="flex:1">名 <span class="form-mock-hint">← ชื่อ</span></div>
+        </div>
+        <div class="form-mock-field">郵便番号 &nbsp;<span class="form-mock-hint">← 0000000 ก็ได้</span></div>
+        <div class="form-mock-field">都道府県 &nbsp;<span class="form-mock-hint">← จังหวัด</span></div>
+        <div class="form-mock-field">市区町村 &nbsp;<span class="form-mock-hint">← เมือง/เขต</span></div>
+        <div class="form-mock-field">住所 &nbsp;<span class="form-mock-hint">← ที่อยู่ (ใส่อะไรก็ได้)</span></div>
+
+        <p style="font-size:10px;color:#666;margin:8px 0 4px;border-top:1px solid #eee;padding-top:8px">支払いオプション</p>
+        <div class="form-mock-field">カード番号 &nbsp;<span class="form-mock-hint">← หมายเลขบัตร 16 หลัก</span></div>
+        <div class="form-mock-row">
+          <div class="form-mock-field" style="flex:1">月/年 <span class="form-mock-hint">← เดือน/ปี</span></div>
+          <div class="form-mock-field" style="flex:1">CVC <span class="form-mock-hint">← 3 หลัก</span></div>
+        </div>
+        <p style="font-size:10px;color:#9a90b8;margin-bottom:8px">※ หากมีรหัส SMS ให้กรอกด้วย</p>
+        <div class="form-mock-btn">注文を確定 &nbsp;<span style="color:#d4af37">← กดปุ่มนี้เพื่อยืนยัน ✓</span></div>
+      </div>
+
+      <div class="checkout-note">
+        ✉️ หลังกด <strong style="color:#d4af37">注文を確定</strong> รหัสผ่านจะถูกส่งไปยังอีเมลของคุณทันที<br>
+        🏠 ที่อยู่ไม่ต้องถูกต้อง — กรอกคร่าวๆ ได้ รหัสไปรษณีย์ใส่ 0000000 ก็ผ่าน
       </div>
     </div>
   </div>
 </section>
 
-<!-- Screenshots（リポジトリの画像を使用） -->
+<!-- Screenshots -->
 <section class="screenshots">
   <div class="container">
     <p class="section-label">ตัวอย่างการใช้งาน</p>
     <h2 class="section-title">ภาพหน้าจอและตัวอย่างผลลัพธ์</h2>
     <p class="section-sub">ดูว่าระบบทำงานอย่างไร และผลการวิเคราะห์มีรายละเอียดแค่ไหน</p>
     <div class="sc-scroll">
-      <img src="sc-1.jpg"    alt="หน้าหลักแอป"        loading="lazy" width="140" height="280">
-      <img src="sc-2.png"    alt="ชาร์ตโหราศาสตร์"    loading="lazy" width="140" height="280">
-      <img src="sc-3.jpg"    alt="ผลการวิเคราะห์"      loading="lazy" width="140" height="280">
-      <img src="sc-4.png"    alt="ตาราง Dasha"         loading="lazy" width="140" height="280">
-      <img src="sc-PDF.png"  alt="ตัวอย่างรายงาน PDF" loading="lazy" width="140" height="280">
-      <img src="sc-mail.png" alt="รับผลทางอีเมล"       loading="lazy" width="140" height="280">
+      <img src="sc-1.jpg"    alt="หน้าหลักแอป"         loading="lazy" width="140" height="280">
+      <img src="sc-2.png"    alt="ชาร์ตโหราศาสตร์"     loading="lazy" width="140" height="280">
+      <img src="sc-3.jpg"    alt="ผลการวิเคราะห์"       loading="lazy" width="140" height="280">
+      <img src="sc-4.png"    alt="ตาราง Dasha"          loading="lazy" width="140" height="280">
+      <img src="sc-PDF.png"  alt="ตัวอย่างรายงาน PDF"  loading="lazy" width="140" height="280">
+      <img src="sc-mail.png" alt="รับผลทางอีเมล"        loading="lazy" width="140" height="280">
     </div>
     <div class="pdf-cta">
       <h3>📄 ดูตัวอย่างรายงานฉบับเต็ม</h3>
-      <p>รายงาน PDF จริง 3 หน้า — ชาร์ต, การวิเคราะห์, และคำแนะนำเชิงปฏิบัติ</p>
+      <p>รายงาน PDF จริง — ชาร์ต, การวิเคราะห์, และคำแนะนำเชิงปฏิบัติ</p>
       <a href="https://drive.google.com/file/d/15uv755RzFNNwFOxfUq4SSOApueuFyvJV/view?usp=sharing"
-         target="_blank" rel="noopener" class="btn-primary">
-        เปิดดูรายงาน PDF →
-      </a>
+         target="_blank" rel="noopener" class="btn-primary">เปิดดูรายงาน PDF →</a>
     </div>
   </div>
 </section>
@@ -256,7 +395,6 @@ footer a:hover{color:#d4af37}
           <span class="store-name">Web App</span>
         </span>
       </a>
-      <!-- Android: Intent URL で即時起動（5秒待ちなし） -->
       <a href="intent://vedacenter.jp/jyotish-th/#Intent;scheme=https;package=jp.vedacenter.jyotish2;S.browser_fallback_url=https%3A%2F%2Fvedacenter.jp%2Fjyotish-th%2F;end"
          class="store-btn" id="android-btn">
         <span class="store-icon">🤖</span>
@@ -290,11 +428,10 @@ footer a:hover{color:#d4af37}
 </footer>
 
 <script>
-// Android以外はAndroidボタンのhrefをWebに変更（Intent URLが誤動作しないよう）
+// Android以外はIntentリンクをWebに差し替え
 (function(){
   var btn = document.getElementById('android-btn');
-  if(!btn) return;
-  if(!/Android/i.test(navigator.userAgent)){
+  if(btn && !/Android/i.test(navigator.userAgent)){
     btn.href = 'https://vedacenter.jp/jyotish-th/';
   }
 })();
