@@ -5,311 +5,91 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Veda Center — วิเคราะห์ดวงชะตาเวทอินเดียด้วย AI</title>
 <meta name="description" content="วิเคราะห์ดวงชะตาโหราศาสตร์เวท (โชติษะ) ด้วยระบบ AI อัจฉริยะ เข้าใจดวงชะตาทุกมิติชีวิต">
-
-<!-- ★ Speed fix 1: Sarabun フォントを preconnect + preload -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<!-- ★ Speed fix 2: header画像を preload -->
 <link rel="preload" as="image" href="header-visual.png">
-
 <style>
-/* ===== Reset & Base ===== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{
-  font-family:'Sarabun',sans-serif;
-  background:#0f0b1f;
-  color:#e8e0f0;
-  line-height:1.8;
-  font-size:16px;
-}
-
-/* ===== 星空背景 ===== */
-body::before{
-  content:'';
-  position:fixed;inset:0;
-  background:radial-gradient(ellipse at 20% 30%,#1a0a3a 0%,#0f0b1f 60%),
-             radial-gradient(ellipse at 80% 70%,#0a1a2e 0%,transparent 60%);
-  z-index:-1;
-}
-
-/* ===== Container ===== */
+body{font-family:'Sarabun',sans-serif;background:#0f0b1f;color:#e8e0f0;line-height:1.8;font-size:16px}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 30%,#1a0a3a 0%,#0f0b1f 60%),radial-gradient(ellipse at 80% 70%,#0a1a2e 0%,transparent 60%);z-index:-1}
 .container{max-width:1040px;margin:0 auto;padding:0 20px}
 
-/* ===== Header ===== */
+/* Header */
 .site-header{width:100%;overflow:hidden}
 .site-header img{width:100%;height:auto;display:block;object-fit:cover;max-height:420px}
 
-/* ===== Hero ===== */
-.hero{
-  text-align:center;
-  padding:60px 20px 50px;
-  position:relative;
-}
-.hero-badge{
-  display:inline-block;
-  background:rgba(212,175,55,0.15);
-  border:1px solid #d4af37;
-  color:#d4af37;
-  font-size:13px;
-  font-weight:600;
-  padding:6px 18px;
-  border-radius:50px;
-  margin-bottom:20px;
-  letter-spacing:0.05em;
-}
-.hero h1{
-  font-size:clamp(26px,5vw,44px);
-  font-weight:700;
-  line-height:1.35;
-  color:#fff;
-  margin-bottom:20px;
-}
+/* Hero */
+.hero{text-align:center;padding:60px 20px 50px}
+.hero-badge{display:inline-block;background:rgba(212,175,55,0.15);border:1px solid #d4af37;color:#d4af37;font-size:13px;font-weight:600;padding:6px 18px;border-radius:50px;margin-bottom:20px;letter-spacing:0.05em}
+.hero h1{font-size:clamp(26px,5vw,44px);font-weight:700;line-height:1.35;color:#fff;margin-bottom:20px}
 .hero h1 span{color:#d4af37}
-.hero p{
-  font-size:17px;
-  color:#c0b8d8;
-  max-width:620px;
-  margin:0 auto 36px;
-  font-weight:300;
-}
-
-/* ===== CTA Buttons ===== */
-.cta-group{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-  justify-content:center;
-  margin-bottom:16px;
-}
-.btn-primary{
-  display:inline-flex;align-items:center;gap:8px;
-  background:#d4af37;
-  color:#0f0b1f;
-  font-size:16px;font-weight:700;
-  padding:14px 32px;
-  border-radius:50px;
-  text-decoration:none;
-  transition:transform .2s,box-shadow .2s;
-  white-space:nowrap;
-}
+.hero p{font-size:17px;color:#c0b8d8;max-width:620px;margin:0 auto 36px;font-weight:300}
+.cta-group{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:16px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:#d4af37;color:#0f0b1f;font-size:16px;font-weight:700;padding:14px 32px;border-radius:50px;text-decoration:none;transition:transform .2s,box-shadow .2s;white-space:nowrap}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,175,55,.35)}
-.btn-secondary{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,0.08);
-  color:#e8e0f0;
-  font-size:15px;font-weight:600;
-  padding:13px 28px;
-  border-radius:50px;
-  border:1px solid rgba(255,255,255,0.2);
-  text-decoration:none;
-  transition:background .2s,transform .2s;
-}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);color:#e8e0f0;font-size:15px;font-weight:600;padding:13px 28px;border-radius:50px;border:1px solid rgba(255,255,255,0.2);text-decoration:none;transition:background .2s,transform .2s}
 .btn-secondary:hover{background:rgba(255,255,255,0.14);transform:translateY(-2px)}
-
-/* 小さい補足文 */
 .hero-note{font-size:12px;color:#7a7090;margin-top:6px}
 
-/* ===== Features ===== */
+/* Section共通 */
+.section-label{text-align:center;font-size:12px;font-weight:600;letter-spacing:.12em;color:#d4af37;text-transform:uppercase;margin-bottom:12px}
+.section-title{text-align:center;font-size:clamp(22px,3.5vw,32px);font-weight:700;color:#fff;margin-bottom:10px}
+.section-sub{text-align:center;color:#9a90b8;font-size:15px;margin-bottom:48px;font-weight:300}
+
+/* Features */
 .features{padding:60px 0}
-.section-label{
-  text-align:center;
-  font-size:12px;font-weight:600;
-  letter-spacing:.12em;
-  color:#d4af37;
-  text-transform:uppercase;
-  margin-bottom:12px;
-}
-.section-title{
-  text-align:center;
-  font-size:clamp(22px,3.5vw,32px);
-  font-weight:700;
-  color:#fff;
-  margin-bottom:10px;
-}
-.section-sub{
-  text-align:center;
-  color:#9a90b8;
-  font-size:15px;
-  margin-bottom:48px;
-  font-weight:300;
-}
-
-.feature-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:24px;
-}
-.feature-card{
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:16px;
-  padding:28px 24px;
-  transition:transform .2s,border-color .2s;
-}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.feature-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px 24px;transition:transform .2s,border-color .2s}
 .feature-card:hover{transform:translateY(-4px);border-color:rgba(212,175,55,.4)}
-.feature-icon{
-  font-size:32px;
-  margin-bottom:14px;
-  display:block;
-}
-.feature-card h3{
-  font-size:17px;font-weight:700;
-  color:#fff;
-  margin-bottom:10px;
-}
-.feature-card p{
-  font-size:14px;
-  color:#9a90b8;
-  line-height:1.7;
-}
+.feature-icon{font-size:32px;margin-bottom:14px;display:block}
+.feature-card h3{font-size:17px;font-weight:700;color:#fff;margin-bottom:10px}
+.feature-card p{font-size:14px;color:#9a90b8;line-height:1.7}
 
-/* ===== Plans ===== */
+/* Plans */
 .plans{padding:60px 0}
-.plan-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-  margin-top:40px;
-}
-.plan-card{
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:16px;
-  padding:28px 22px;
-  position:relative;
-}
-.plan-card.popular{
-  border-color:#d4af37;
-  background:rgba(212,175,55,.06);
-}
-.popular-badge{
-  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
-  background:#d4af37;color:#0f0b1f;
-  font-size:11px;font-weight:700;
-  padding:4px 16px;border-radius:50px;
-  white-space:nowrap;
-}
-.plan-name{
-  font-size:14px;font-weight:600;
-  color:#9a90b8;letter-spacing:.05em;
-  margin-bottom:8px;
-}
-.plan-price{
-  font-size:28px;font-weight:700;
-  color:#fff;
-  margin-bottom:4px;
-}
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:40px}
+.plan-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px 22px;position:relative}
+.plan-card.popular{border-color:#d4af37;background:rgba(212,175,55,.06)}
+.popular-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#d4af37;color:#0f0b1f;font-size:11px;font-weight:700;padding:4px 16px;border-radius:50px;white-space:nowrap}
+.plan-name{font-size:14px;font-weight:600;color:#9a90b8;letter-spacing:.05em;margin-bottom:8px}
+.plan-price{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px}
 .plan-price span{font-size:14px;font-weight:400;color:#9a90b8}
-.plan-desc{
-  font-size:13px;color:#7a7090;
-  margin-bottom:18px;
-  line-height:1.6;
-}
-.plan-features{list-style:none;margin:0;padding:0}
-.plan-features li{
-  font-size:13px;color:#c0b8d8;
-  padding:5px 0;
-  display:flex;align-items:flex-start;gap:8px;
-}
+.plan-desc{font-size:13px;color:#7a7090;margin-bottom:18px;line-height:1.6}
+.plan-features{list-style:none}
+.plan-features li{font-size:13px;color:#c0b8d8;padding:5px 0;display:flex;align-items:flex-start;gap:8px}
 .plan-features li::before{content:'✦';color:#d4af37;font-size:11px;margin-top:3px;flex-shrink:0}
 
-/* ===== Screenshots ===== */
+/* Screenshots */
 .screenshots{padding:60px 0}
-.sc-scroll{
-  display:flex;
-  gap:16px;
-  overflow-x:auto;
-  padding:8px 4px 20px;
-  scrollbar-width:thin;
-  scrollbar-color:#3a2f5a transparent;
-  -webkit-overflow-scrolling:touch;
-  /* ★ Speed fix 3: will-change でスクロール最適化 */
-  will-change:scroll-position;
-}
+.sc-scroll{display:flex;gap:16px;overflow-x:auto;padding:8px 4px 20px;scrollbar-width:thin;scrollbar-color:#3a2f5a transparent;-webkit-overflow-scrolling:touch}
 .sc-scroll::-webkit-scrollbar{height:4px}
-.sc-scroll::-webkit-scrollbar-track{background:transparent}
 .sc-scroll::-webkit-scrollbar-thumb{background:#3a2f5a;border-radius:4px}
-.sc-scroll img{
-  height:280px;
-  width:auto;
-  flex-shrink:0;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,0.1);
-  object-fit:cover;
-  /* ★ Speed fix 3: lazy load */
-}
+.sc-scroll img{height:280px;width:auto;flex-shrink:0;border-radius:12px;border:1px solid rgba(255,255,255,0.1);object-fit:cover}
 
-/* ===== PDF CTA ===== */
-.pdf-cta{
-  text-align:center;
-  padding:40px 20px;
-  background:rgba(212,175,55,.05);
-  border:1px solid rgba(212,175,55,.2);
-  border-radius:20px;
-  margin:40px 0 60px;
-}
-.pdf-cta h3{
-  font-size:20px;font-weight:700;
-  color:#fff;margin-bottom:10px;
-}
-.pdf-cta p{
-  font-size:14px;color:#9a90b8;
-  margin-bottom:24px;
-}
+/* PDF CTA */
+.pdf-cta{text-align:center;padding:40px 20px;background:rgba(212,175,55,.05);border:1px solid rgba(212,175,55,.2);border-radius:20px;margin:40px 0 60px}
+.pdf-cta h3{font-size:20px;font-weight:700;color:#fff;margin-bottom:10px}
+.pdf-cta p{font-size:14px;color:#9a90b8;margin-bottom:24px}
 
-/* ===== Download Section ===== */
-.download{
-  padding:70px 0;
-  text-align:center;
-  background:rgba(255,255,255,.02);
-  border-top:1px solid rgba(255,255,255,.06);
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-.download h2{
-  font-size:clamp(22px,3.5vw,32px);
-  font-weight:700;color:#fff;
-  margin-bottom:12px;
-}
+/* Download */
+.download{padding:70px 0;text-align:center;background:rgba(255,255,255,.02);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+.download h2{font-size:clamp(22px,3.5vw,32px);font-weight:700;color:#fff;margin-bottom:12px}
 .download p{color:#9a90b8;font-size:15px;margin-bottom:36px}
-.store-buttons{
-  display:flex;
-  flex-wrap:wrap;
-  gap:16px;
-  justify-content:center;
-}
-.store-btn{
-  display:inline-flex;align-items:center;gap:10px;
-  background:rgba(255,255,255,0.07);
-  border:1px solid rgba(255,255,255,0.18);
-  border-radius:12px;
-  padding:12px 24px;
-  text-decoration:none;
-  color:#fff;
-  font-size:14px;
-  font-weight:600;
-  transition:background .2s,transform .2s;
-  min-width:180px;
-}
+.store-buttons{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+.store-btn{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18);border-radius:12px;padding:12px 24px;text-decoration:none;color:#fff;font-size:14px;font-weight:600;transition:background .2s,transform .2s;min-width:180px}
 .store-btn:hover{background:rgba(255,255,255,0.12);transform:translateY(-2px)}
 .store-btn .store-icon{font-size:26px;line-height:1}
 .store-btn .store-text{text-align:left}
 .store-btn .store-sub{display:block;font-size:10px;font-weight:400;color:#9a90b8}
 .store-btn .store-name{display:block;font-size:15px;font-weight:700}
 
-/* ===== Footer ===== */
-footer{
-  text-align:center;
-  padding:32px 20px;
-  color:#4a4060;
-  font-size:13px;
-}
+/* Footer */
+footer{text-align:center;padding:32px 20px;color:#4a4060;font-size:13px}
 footer a{color:#6a5e90;text-decoration:none}
 footer a:hover{color:#d4af37}
 
-/* ===== Responsive ===== */
 @media(max-width:640px){
   .hero{padding:40px 16px 36px}
   .sc-scroll img{height:220px}
@@ -319,9 +99,9 @@ footer a:hover{color:#d4af37}
 </head>
 <body>
 
-<!-- Header Image -->
+<!-- Header Image（リポジトリの画像を使用） -->
 <header class="site-header">
-  <img src="header-visual.png" alt="Veda Center — ผลการวิเคราะห์ดวงชะตาเวทอินเดีย" width="1200" height="420">
+  <img src="header-visual.png" alt="Veda Center — โหราศาสตร์เวทอินเดียด้วย AI" width="1200" height="420">
 </header>
 
 <!-- Hero -->
@@ -348,7 +128,6 @@ footer a:hover{color:#d4af37}
     <p class="section-label">คุณสมบัติหลัก</p>
     <h2 class="section-title">ทำไมต้อง Veda Center?</h2>
     <p class="section-sub">ระบบวิเคราะห์ดวงชะตาที่ครอบคลุมที่สุด สำหรับผู้ที่ต้องการความแม่นยำในแบบโหราศาสตร์คลาสสิก</p>
-
     <div class="feature-grid">
       <div class="feature-card">
         <span class="feature-icon">🪐</span>
@@ -390,7 +169,6 @@ footer a:hover{color:#d4af37}
     <p class="section-label">แพ็กเกจ</p>
     <h2 class="section-title">เลือกแพ็กเกจที่เหมาะกับคุณ</h2>
     <p class="section-sub">เริ่มต้นฟรี หรืออัปเกรดเพื่อรับการวิเคราะห์เชิงลึก</p>
-
     <div class="plan-grid">
       <div class="plan-card">
         <div class="plan-name">FREE</div>
@@ -402,7 +180,6 @@ footer a:hover{color:#d4af37}
           <li>1 ครั้งต่อเซสชัน</li>
         </ul>
       </div>
-
       <div class="plan-card popular">
         <div class="popular-badge">⭐ แนะนำ</div>
         <div class="plan-name">STANDARD</div>
@@ -415,7 +192,6 @@ footer a:hover{color:#d4af37}
           <li>ส่งออก PDF + อีเมล</li>
         </ul>
       </div>
-
       <div class="plan-card">
         <div class="plan-name">PREMIUM</div>
         <div class="plan-price">¥2,970 <span>/ ครั้ง</span></div>
@@ -427,7 +203,6 @@ footer a:hover{color:#d4af37}
           <li>Upaya เบื้องต้น (สี, ทิศ, ตัวเลข)</li>
         </ul>
       </div>
-
       <div class="plan-card">
         <div class="plan-name">PRO / อาจารย์</div>
         <div class="plan-price">¥3,850 <span>/ ครั้ง</span></div>
@@ -443,23 +218,20 @@ footer a:hover{color:#d4af37}
   </div>
 </section>
 
-<!-- Screenshots -->
+<!-- Screenshots（リポジトリの画像を使用） -->
 <section class="screenshots">
   <div class="container">
     <p class="section-label">ตัวอย่างการใช้งาน</p>
     <h2 class="section-title">ภาพหน้าจอและตัวอย่างผลลัพธ์</h2>
     <p class="section-sub">ดูว่าระบบทำงานอย่างไร และผลการวิเคราะห์มีรายละเอียดแค่ไหน</p>
-
     <div class="sc-scroll">
-      <!-- ★ Speed fix: loading="lazy" + width/height を明示 -->
-      <img src="sc-1.jpg"    alt="หน้าหลักแอป"           loading="lazy" width="140" height="280">
-      <img src="sc-2.png"    alt="ชาร์ตโหราศาสตร์"       loading="lazy" width="140" height="280">
-      <img src="sc-3.jpg"    alt="ผลการวิเคราะห์"         loading="lazy" width="140" height="280">
-      <img src="sc-4.png"    alt="ตาราง Dasha"            loading="lazy" width="140" height="280">
-      <img src="sc-PDF.png"  alt="ตัวอย่างรายงาน PDF"    loading="lazy" width="140" height="280">
-      <img src="sc-mail.png" alt="รับผลทางอีเมล"          loading="lazy" width="140" height="280">
+      <img src="sc-1.jpg"    alt="หน้าหลักแอป"        loading="lazy" width="140" height="280">
+      <img src="sc-2.png"    alt="ชาร์ตโหราศาสตร์"    loading="lazy" width="140" height="280">
+      <img src="sc-3.jpg"    alt="ผลการวิเคราะห์"      loading="lazy" width="140" height="280">
+      <img src="sc-4.png"    alt="ตาราง Dasha"         loading="lazy" width="140" height="280">
+      <img src="sc-PDF.png"  alt="ตัวอย่างรายงาน PDF" loading="lazy" width="140" height="280">
+      <img src="sc-mail.png" alt="รับผลทางอีเมล"       loading="lazy" width="140" height="280">
     </div>
-
     <div class="pdf-cta">
       <h3>📄 ดูตัวอย่างรายงานฉบับเต็ม</h3>
       <p>รายงาน PDF จริง 3 หน้า — ชาร์ต, การวิเคราะห์, และคำแนะนำเชิงปฏิบัติ</p>
@@ -471,12 +243,11 @@ footer a:hover{color:#d4af37}
   </div>
 </section>
 
-<!-- Download / Access -->
+<!-- Download -->
 <section class="download">
   <div class="container">
     <h2>เริ่มต้นใช้งานได้เลย</h2>
-    <p>ใช้งานผ่านเว็บ, สมาร์ตโฟน หรือ PC ไม่ต้องติดตั้งแอป</p>
-
+    <p>ใช้งานผ่านเว็บ, สมาร์ตโฟน หรือ PC — ไม่ต้องติดตั้งแอป</p>
     <div class="store-buttons">
       <a href="https://vedacenter.jp/jyotish-th/" class="store-btn">
         <span class="store-icon">🌐</span>
@@ -485,21 +256,19 @@ footer a:hover{color:#d4af37}
           <span class="store-name">Web App</span>
         </span>
       </a>
-
-      <!-- Android: Intentリンク（5秒問題の解決策） -->
-      <a href="https://vedacenter.jp/jyotish-th/" class="store-btn"
-         id="android-btn">
+      <!-- Android: Intent URL で即時起動（5秒待ちなし） -->
+      <a href="intent://vedacenter.jp/jyotish-th/#Intent;scheme=https;package=jp.vedacenter.jyotish2;S.browser_fallback_url=https%3A%2F%2Fvedacenter.jp%2Fjyotish-th%2F;end"
+         class="store-btn" id="android-btn">
         <span class="store-icon">🤖</span>
         <span class="store-text">
           <span class="store-sub">เปิดใน Android</span>
           <span class="store-name">Android App</span>
         </span>
       </a>
-
       <a href="https://vedacenter.jp/jyotish-th/" class="store-btn">
         <span class="store-icon">🍎</span>
         <span class="store-text">
-          <span class="store-sub">เปิดใน iOS</span>
+          <span class="store-sub">เปิดใน iOS / iPhone</span>
           <span class="store-name">iPhone / iPad</span>
         </span>
       </a>
@@ -510,9 +279,7 @@ footer a:hover{color:#d4af37}
 <!-- Footer -->
 <footer>
   <div class="container">
-    <p style="margin-bottom:8px;font-size:16px;font-weight:600;color:#9a90b8">
-      VEDA CENTER
-    </p>
+    <p style="margin-bottom:8px;font-size:16px;font-weight:600;color:#9a90b8">VEDA CENTER</p>
     <p>
       <a href="https://vedacenter.jp/" target="_blank" rel="noopener">vedacenter.jp</a>
       &nbsp;·&nbsp;
@@ -523,34 +290,13 @@ footer a:hover{color:#d4af37}
 </footer>
 
 <script>
-// ★ Speed fix 4: Android アプリへのディープリンク（5秒問題の解消）
-// Intent URLを使うことで、アプリがインストール済みの場合は即座に起動
-// インストールされていない場合はWebにフォールバック
+// Android以外はAndroidボタンのhrefをWebに変更（Intent URLが誤動作しないよう）
 (function(){
-  var androidBtn = document.getElementById('android-btn');
-  if(!androidBtn) return;
-
-  var APP_PACKAGE = 'jp.vedacenter.jyotish2'; // Androidアプリのパッケージ名
-  var WEB_URL = 'https://vedacenter.jp/jyotish-th/';
-
-  // User Agentでandroidか判定
-  var isAndroid = /Android/i.test(navigator.userAgent);
-  if(!isAndroid) return; // Android以外はそのままWeb
-
-  androidBtn.addEventListener('click', function(e){
-    e.preventDefault();
-
-    // Intent URL: アプリがあれば即起動、なければPlayStoreへ
-    var intentUrl = 'intent://#Intent;'
-      + 'package=' + APP_PACKAGE + ';'
-      + 'scheme=https;'
-      + 'action=android.intent.action.VIEW;'
-      + 'S.browser_fallback_url=' + encodeURIComponent(WEB_URL) + ';'
-      + 'end';
-
-    // Intent URLに飛ぶ → アプリがなければ browser_fallback_url に即フォールバック
-    window.location.href = intentUrl;
-  });
+  var btn = document.getElementById('android-btn');
+  if(!btn) return;
+  if(!/Android/i.test(navigator.userAgent)){
+    btn.href = 'https://vedacenter.jp/jyotish-th/';
+  }
 })();
 </script>
 
