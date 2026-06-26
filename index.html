@@ -27,6 +27,27 @@
         .pdf-link { font-weight: bold; color: #4b0082; text-decoration: underline; }
 
         @media (max-width: 768px) { .content-wrapper { flex-direction: column; } }
+        /* PDFリンクをボタン風にスタイル */
+.pdf-link-box { text-align: center; margin: 40px 0; }
+.pdf-link { 
+    background-color: #d4af37; 
+    color: #0f172a; 
+    padding: 15px 30px; 
+    border-radius: 50px; 
+    text-decoration: none; 
+    font-weight: bold;
+    display: inline-block;
+    transition: transform 0.2s;
+}
+.pdf-link:hover { transform: scale(1.05); }
+
+/* 画像サイズの統一 */
+.sc-gallery img, .sc-sample img { 
+    height: 300px; 
+    width: auto; /* 幅は自動調整 */
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
     </style>
 </head>
 <body>
@@ -53,22 +74,25 @@
         </div>
 
         <section class="sc-section">
-            <h2>ภาพตัวอย่างการใช้งานและผลลัพธ์</h2>
-            <div class="sc-gallery">
-                <img src="sc-1.jpg" alt="UI 1"><img src="sc-2.png" alt="UI 2"><img src="sc-3.jpg" alt="UI 3"><img src="sc-4.png" alt="UI 4">
-            </div>
-            
-            <div class="sc-sample">
-                <img src="sc-PDF1.png" alt="PDF Sample">
-                <img src="sc-mail.png" alt="Mail Sample">
-            </div>
-            
-            <div class="pdf-link-box">
-                <a href="https://drive.google.com/file/d/15uv755RzFNNwFOxfUq4SSOApueuFyvJV/view?usp=sharing" target="_blank" class="pdf-link">
-                    ดูตัวอย่างรายงานผลลัพธ์ฉบับเต็ม (PDF)
-                </a>
-            </div>
-        </section>
+
+    <h2>ภาพตัวอย่างการใช้งานและผลลัพธ์</h2>
+    
+    <div class="sc-gallery">
+        <img src="sc-1.jpg" alt="UI 1">
+        <img src="sc-2.png" alt="UI 2">
+        <img src="sc-3.jpg" alt="UI 3">
+        <img src="sc-4.png" alt="UI 4">
+        <img src="sc-PDF1.png" alt="PDF Sample">
+        <img src="sc-mail.png" alt="Mail Sample">
+    </div>
+    
+    <div class="pdf-link-box">
+        <a href="https://drive.google.com/file/d/15uv755RzFNNwFOxfUq4SSOApueuFyvJV/view?usp=sharing" target="_blank" class="pdf-link">
+            ดูตัวอย่างรายงานผลลัพธ์ฉบับเต็ม (PDF)
+        </a>
+    </div>
+</section>
+
     </main>
 </body>
 </html>
