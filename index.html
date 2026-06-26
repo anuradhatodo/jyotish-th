@@ -117,6 +117,30 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .store-btn .store-sub{display:block;font-size:10px;font-weight:400;color:#9a90b8}
 .store-btn .store-name{display:block;font-size:15px;font-weight:700}
 
+/* ===== プリペイドカードセクション ===== */
+.prepaid{padding:60px 0}
+.prepaid-tabs{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:40px}
+.prepaid-col{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:28px 24px}
+.prepaid-col-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.flag{font-size:28px;line-height:1}
+.prepaid-col-header h3{font-size:17px;font-weight:700;color:#fff;margin:0}
+.prepaid-cards{display:flex;flex-direction:column;gap:14px}
+.prepaid-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px 18px}
+.prepaid-item.best{border-color:rgba(212,175,55,.4);background:rgba(212,175,55,.05)}
+.prepaid-item-top{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.prepaid-name{font-size:14px;font-weight:700;color:#fff}
+.prepaid-badge{font-size:10px;background:#d4af37;color:#0f0b1f;padding:3px 10px;border-radius:50px;font-weight:700;white-space:nowrap}
+.prepaid-where{font-size:12px;color:#d4af37;margin-bottom:6px;line-height:1.6}
+.prepaid-desc{font-size:12px;color:#9a90b8;line-height:1.7}
+.prepaid-warn{font-size:11px;color:#e0a060;display:block;margin-top:4px}
+
+/* 注意点グリッド */
+.prepaid-notes{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:28px}
+.prepaid-note-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.prepaid-note-item{display:flex;align-items:flex-start;gap:14px;font-size:13px;color:#9a90b8;line-height:1.7}
+.prepaid-note-item strong{color:#e8e0f0;display:block;margin-bottom:2px}
+.prepaid-note-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+
 /* ===== Footer ===== */
 footer{text-align:center;padding:32px 20px;color:#4a4060;font-size:13px}
 footer a{color:#6a5e90;text-decoration:none}
@@ -124,6 +148,9 @@ footer a:hover{color:#d4af37}
 
 /* ===== Responsive ===== */
 @media(max-width:768px){
+  .prepaid-tabs{grid-template-columns:1fr}
+  .prepaid-col{padding:20px 16px}
+
   .hero{padding:36px 16px 32px}
   .hero h1{font-size:clamp(22px,6vw,32px)}
   .btn-primary{padding:12px 24px;font-size:15px}
@@ -354,6 +381,117 @@ footer a:hover{color:#d4af37}
       <div class="checkout-note">
         ✉️ หลังกด <strong style="color:#d4af37">注文を確定</strong> รหัสผ่านจะถูกส่งไปยังอีเมลของคุณทันที<br>
         🏠 ที่อยู่ไม่ต้องถูกต้อง — กรอกคร่าวๆ ได้ รหัสไปรษณีย์ใส่ 0000000 ก็ผ่าน
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- プリペイドカードガイド -->
+<section class="prepaid">
+  <div class="container">
+    <p class="section-label">คำถามที่พบบ่อย</p>
+    <h2 class="section-title">💳 ไม่มีบัตรเครดิต — ใช้บัตรเติมเงินได้ไหม?</h2>
+    <p class="section-sub">ได้เลย! บัตรที่มีโลโก้ Visa หรือ Mastercard ทุกประเภท — ชำระเงินได้เหมือนบัตรเครดิตทั่วไป</p>
+
+    <div class="prepaid-tabs">
+      <div class="prepaid-col">
+        <div class="prepaid-col-header">
+          <span class="flag">🇹🇭</span>
+          <h3>สำหรับผู้ใช้ในประเทศไทย</h3>
+        </div>
+        <div class="prepaid-cards">
+          <div class="prepaid-item best">
+            <div class="prepaid-item-top">
+              <span class="prepaid-name">TrueMoney Mastercard</span>
+              <span class="prepaid-badge">แนะนำ</span>
+            </div>
+            <p class="prepaid-where">📍 เติมเงินที่ 7-Eleven ทั่วประเทศ</p>
+            <p class="prepaid-desc">กดรับเลขบัตรในแอป TrueMoney แล้วกรอกที่หน้าชำระเงินได้เลย<br>
+            <span class="prepaid-warn">⚠️ มีค่าธรรมเนียมแปลงสกุลเงิน +3.5% (เพราะชำระให้เว็บญี่ปุ่น)<br>
+            เช่น ¥1,980 → จ่ายจริงประมาณ ¥2,050</span></p>
+          </div>
+          <div class="prepaid-item">
+            <div class="prepaid-item-top">
+              <span class="prepaid-name">Google Pay</span>
+            </div>
+            <p class="prepaid-where">📍 ลงทะเบียนบัตรในแอป Google</p>
+            <p class="prepaid-desc">ถ้ามีบัตร Visa/Mastercard ลงทะเบียนใน Google Pay แล้ว — กดปุ่ม G Pay ในหน้าชำระเงินได้เลย ไม่ต้องกรอกเลขบัตร</p>
+          </div>
+          <div class="prepaid-item">
+            <div class="prepaid-item-top">
+              <span class="prepaid-name">บัตร Visa/Mastercard ทั่วไป</span>
+            </div>
+            <p class="prepaid-where">📍 ธนาคาร Bangkok Bank, Kasikorn, SCB ฯลฯ</p>
+            <p class="prepaid-desc">บัตรเดบิตหรือเครดิตของธนาคารไทยทั่วไป ใช้ได้ปกติ</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prepaid-col">
+        <div class="prepaid-col-header">
+          <span class="flag">🇯🇵</span>
+          <h3>สำหรับคนไทยในญี่ปุ่น</h3>
+        </div>
+        <div class="prepaid-cards">
+          <div class="prepaid-item best">
+            <div class="prepaid-item-top">
+              <span class="prepaid-name">Vプリカ (V-Preca)</span>
+              <span class="prepaid-badge">แนะนำ</span>
+            </div>
+            <p class="prepaid-where">📍 ซื้อที่ร้านสะดวกซื้อ 7-Eleven / FamilyMart / Lawson — จ่ายเงินสดได้ ไม่ต้องมีบัญชีธนาคาร ไม่ต้องสมัคร</p>
+            <p class="prepaid-desc">บัตร Visa เติมเงิน ใช้ชำระออนไลน์ได้ทันที<br>
+            <span style="color:#6fd87a">✅ ไม่มีค่าธรรมเนียมแปลงสกุลเงิน (เพราะเว็บอยู่ในญี่ปุ่น)</span></p>
+          </div>
+          <div class="prepaid-item">
+            <div class="prepaid-item-top">
+              <span class="prepaid-name">バンドルカード (Vandle Card)</span>
+            </div>
+            <p class="prepaid-where">📍 ออกบัตรผ่านแอปสมาร์ตโฟน — ใช้ได้ภายใน 1 นาที เติมเงินที่คอนวีเนียนสโตร์ได้</p>
+            <p class="prepaid-desc">บัตร Visa เสมือน ไม่ต้องสมัครบัตรจริง</p>
+          </div>
+          <div class="prepaid-item">
+            <div class="prepaid-item-top">
+              <span class="prepaid-name">Google Pay</span>
+            </div>
+            <p class="prepaid-where">📍 ลงทะเบียน Vプリカ หรือบัตรอื่นใน Google Pay</p>
+            <p class="prepaid-desc">เมื่อลงทะเบียนบัตรในแอป Google แล้ว กดปุ่ม G Pay ในหน้าชำระเงินได้เลย</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 注意点 -->
+    <div class="prepaid-notes">
+      <h3 style="font-size:15px;font-weight:700;color:#fff;margin-bottom:16px">⚠️ ข้อควรระวังก่อนชำระเงิน</h3>
+      <div class="prepaid-note-grid">
+        <div class="prepaid-note-item">
+          <span class="prepaid-note-icon">💰</span>
+          <div>
+            <strong>ยอดเงินในบัตรต้องเพียงพอ</strong><br>
+            <span>เติมให้มากกว่าราคาเล็กน้อย<br>Standard ¥1,980 / Premium ¥2,970</span>
+          </div>
+        </div>
+        <div class="prepaid-note-item">
+          <span class="prepaid-note-icon">🔢</span>
+          <div>
+            <strong>กรอกเลขบัตรให้ถูกต้อง</strong><br>
+            <span>เลขบัตร 16 หลัก + วันหมดอายุ + CVC 3 หลัก</span>
+          </div>
+        </div>
+        <div class="prepaid-note-item">
+          <span class="prepaid-note-icon">❌</span>
+          <div>
+            <strong>ผ่อนชำระไม่ได้</strong><br>
+            <span>บัตรเติมเงินชำระได้ครั้งเดียวเท่านั้น (ไม่เป็นปัญหา เพราะ VEDA CENTER ชำระครั้งเดียว)</span>
+          </div>
+        </div>
+        <div class="prepaid-note-item">
+          <span class="prepaid-note-icon">✉️</span>
+          <div>
+            <strong>รหัสผ่านส่งทางอีเมล</strong><br>
+            <span>หลังชำระเงินสำเร็จ รหัสผ่านจะส่งมาที่อีเมลที่กรอกในหน้าชำระเงินทันที</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
