@@ -6,75 +6,53 @@
     <title>Veda Center - แอปโหราศาสตร์เวทอินเดีย</title>
     <style>
         body { font-family: 'Krub', sans-serif; margin: 0; background-color: #f4f4f9; color: #333; line-height: 1.6; }
-        header { background-color: #000; width: 100%; }
-        header img { width: 100%; height: auto; display: block; }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; box-sizing: border-box; }
         
-        h1 { font-size: 2rem; color: #4b0082; font-weight: 700; margin-bottom: 20px; }
-        h2 { font-size: 1.4rem; color: #d4af37; margin-top: 20px; }
-        
-        /* PC用レイアウト：横並び */
+        /* 以前の横並びレイアウトを復元 */
         .content-wrapper { display: flex; flex-wrap: wrap; gap: 30px; padding: 40px 0; }
         .main-text { flex: 2; min-width: 300px; }
         .download-section { flex: 1; min-width: 250px; background-color: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; }
         
-        .app-icon { width: 80px; margin-bottom: 15px; border-radius: 15px; }
-        .download-button { display: block; margin: 12px auto; max-width: 160px; transition: transform 0.2s; }
+        .download-button { display: block; margin: 12px auto; max-width: 180px; }
         .download-button img { width: 100%; height: auto; }
 
-        .details-section { padding: 40px 0; text-align: center; }
-        .details-section img { width: 100%; max-width: 700px; border-radius: 15px; }
+        /* スクリーンショット用スタイル */
+        .sc-gallery { display: flex; overflow-x: auto; gap: 15px; padding: 20px 0; }
+        .sc-gallery img { height: 300px; border-radius: 10px; }
+        .sc-full { width: 100%; border-radius: 10px; margin-top: 15px; }
+        .pdf-link-box { text-align: center; padding: 20px; }
 
-        footer { background-color: #333; color: #fff; text-align: center; padding: 20px; }
-        footer a { color: #d4af37; text-decoration: none; }
-
-        /* スマホ用レイアウト：縦並びに強制変更 */
-        @media (max-width: 768px) {
-            .content-wrapper { flex-direction: column; }
-            h1 { font-size: 1.6rem; }
-            .download-section { margin-top: 20px; }
-        }
+        @media (max-width: 768px) { .content-wrapper { flex-direction: column; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#4b0082">
 </head>
 <body>
-    <header><img src="header-visual.png" alt="Main Visual"></header>
+    <header><img src="header-visual.png" style="width:100%;" alt="Header"></header>
+    
     <main class="container">
-        <section class="container" style="padding: 40px 0;">
-    <h2>วิธีติดตั้งแอปบนหน้าจอโฮม (วิธีติดตั้งลงเครื่อง)</h2>
-    <div style="background:#fff; padding:20px; border-radius:15px;">
-        <p><strong>สำหรับ iPhone (Safari):</strong> กดปุ่ม "Share" (แชร์) ด้านล่าง แล้วเลือก "Add to Home Screen" (เพิ่มไปยังหน้าจอโฮม)</p>
-        <p><strong>สำหรับ Android (Chrome):</strong> กดปุ่ม "Menu" (จุด 3 จุด) แล้วเลือก "Add to Home Screen" (ติดตั้งแอป หรือ เพิ่มลงหน้าจอหลัก)</p>
-        <p><strong>สำหรับ PC (Chrome/Edge):</strong> กดปุ่ม "Install" ที่แถบที่อยู่ URL (Address Bar) ด้านบนขวา</p>
-    </div>
-</section>
         <div class="content-wrapper">
             <div class="main-text">
                 <h1>เปิดรหัสลับแห่งชีวิต: ปลดล็อกความสำเร็จด้วยโหราศาสตร์เวท</h1>
-                <p>สัมผัสภูมิปัญญาเวทโบราณที่แม่นยำที่สุดผ่านระบบ AI อัจฉริยะ เข้าใจดวงชะตาของคุณได้ง่ายๆ ในทุกมิติชีวิต</p>
-                <h2>ทำไมต้อง Veda Center?</h2>
-                <ul>
-                    <li>วิเคราะห์แม่นยำ: เจาะลึกดวงชะตาเวทอย่างละเอียด พร้อมคำแนะนำ</li>
-                    <li>ครบทุกเรื่อง: ความรัก การงาน การเงิน และสุขภาพ</li>
-                    <li>ใช้งานง่าย: ระบบ AI วิเคราะห์และสรุปผลให้ทันที</li>
-                </ul>
+                <p>สัมผัสภูมิปัญญาเวทโบราณที่แม่นยำที่สุดผ่านระบบ AI อัจฉริยะ</p>
             </div>
             <div class="download-section">
-                <img src="app-icon.png" alt="App Icon" class="app-icon">
                 <h2>ดาวน์โหลดเลย!</h2>
-                <a href="https://vedacenter.jp/jyotish-th/" class="download-button"><img src="download-ios.png" alt="iOS"></a>
-                <a href="https://vedacenter.jp/jyotish-th/" class="download-button"><img src="download-android.png" alt="Android"></a>
-                <a href="https://vedacenter.jp/jyotish-th/" class="download-button"><img src="download-pc.png" alt="PC"></a>
+                <a href="#" class="download-button"><img src="download-ios.png" alt="iOS"></a>
+                <a href="#" class="download-button"><img src="download-android.png" alt="Android"></a>
+                <a href="#" class="download-button"><img src="download-pc.png" alt="PC"></a>
             </div>
         </div>
-        <section class="details-section">
-            <img src="jyotish-th-2.png" alt="Details">
+
+        <section>
+            <h2>ภาพตัวอย่างการใช้งาน</h2>
+            <div class="sc-gallery">
+                <img src="sc-1.jpg" alt="UI"><img src="sc-2.png" alt="UI"><img src="sc-3.jpg" alt="UI"><img src="sc-4.png" alt="UI">
+            </div>
+            <img src="sc-PDF1.png" alt="PDF" class="sc-full">
+            <img src="sc-mail.png" alt="Mail" class="sc-full">
+            <div class="pdf-link-box">
+                <a href="https://drive.google.com/file/d/15uv755RzFNNwFOxfUq4SSOApueuFyvJV/view?usp=sharing" target="_blank">ดูตัวอย่างรายงานผลลัพธ์ฉบับเต็ม (PDF)</a>
+            </div>
         </section>
     </main>
-    <footer>
-        <p><a href="legal.html">ข้อมูลทางกฎหมาย</a> &copy; 2026 OFFICE TODO</p>
-    </footer>
 </body>
 </html>
