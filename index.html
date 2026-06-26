@@ -1,104 +1,558 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veda Center - แอปโหราศาสตร์เวทอินเดีย</title>
-    <style>
-        body { font-family: 'Krub', sans-serif; margin: 0; background-color: #f4f4f9; color: #333; line-height: 1.6; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; box-sizing: border-box; }
-        
-        /* メインレイアウト */
-        .content-wrapper { display: flex; flex-wrap: wrap; gap: 30px; padding: 40px 0; }
-        .main-text { flex: 2; min-width: 300px; }
-        .download-section { flex: 1; min-width: 250px; background-color: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; }
-        
-        .download-button { display: block; margin: 12px auto; max-width: 180px; }
-        .download-button img { width: 100%; height: auto; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veda Center — วิเคราะห์ดวงชะตาเวทอินเดียด้วย AI</title>
+<meta name="description" content="วิเคราะห์ดวงชะตาโหราศาสตร์เวท (โชติษะ) ด้วยระบบ AI อัจฉริยะ เข้าใจดวงชะตาทุกมิติชีวิต">
 
-        /* スクリーンショットセクション（最後に追加） */
-        .sc-section { padding: 40px 0; border-top: 2px solid #ddd; }
-        .sc-gallery { display: flex; overflow-x: auto; gap: 15px; padding: 20px 0; }
-        .sc-gallery img { height: 300px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .sc-sample { display: flex; gap: 15px; justify-content: center; margin-top: 20px; }
-        .sc-sample img { height: 300px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        
-        .pdf-link-box { text-align: center; margin-top: 20px; }
-        .pdf-link { font-weight: bold; color: #4b0082; text-decoration: underline; }
+<!-- ★ Speed fix 1: Sarabun フォントを preconnect + preload -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        @media (max-width: 768px) { .content-wrapper { flex-direction: column; } }
-        /* PDFリンクをボタン風にスタイル */
-.pdf-link-box { text-align: center; margin: 40px 0; }
-.pdf-link { 
-    background-color: #d4af37; 
-    color: #0f172a; 
-    padding: 15px 30px; 
-    border-radius: 50px; 
-    text-decoration: none; 
-    font-weight: bold;
-    display: inline-block;
-    transition: transform 0.2s;
+<!-- ★ Speed fix 2: header画像を preload -->
+<link rel="preload" as="image" href="header-visual.png">
+
+<style>
+/* ===== Reset & Base ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Sarabun',sans-serif;
+  background:#0f0b1f;
+  color:#e8e0f0;
+  line-height:1.8;
+  font-size:16px;
 }
-.pdf-link:hover { transform: scale(1.05); }
 
-/* 画像サイズの統一 */
-.sc-gallery img, .sc-sample img { 
-    height: 300px; 
-    width: auto; /* 幅は自動調整 */
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+/* ===== 星空背景 ===== */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background:radial-gradient(ellipse at 20% 30%,#1a0a3a 0%,#0f0b1f 60%),
+             radial-gradient(ellipse at 80% 70%,#0a1a2e 0%,transparent 60%);
+  z-index:-1;
 }
-    </style>
+
+/* ===== Container ===== */
+.container{max-width:1040px;margin:0 auto;padding:0 20px}
+
+/* ===== Header ===== */
+.site-header{width:100%;overflow:hidden}
+.site-header img{width:100%;height:auto;display:block;object-fit:cover;max-height:420px}
+
+/* ===== Hero ===== */
+.hero{
+  text-align:center;
+  padding:60px 20px 50px;
+  position:relative;
+}
+.hero-badge{
+  display:inline-block;
+  background:rgba(212,175,55,0.15);
+  border:1px solid #d4af37;
+  color:#d4af37;
+  font-size:13px;
+  font-weight:600;
+  padding:6px 18px;
+  border-radius:50px;
+  margin-bottom:20px;
+  letter-spacing:0.05em;
+}
+.hero h1{
+  font-size:clamp(26px,5vw,44px);
+  font-weight:700;
+  line-height:1.35;
+  color:#fff;
+  margin-bottom:20px;
+}
+.hero h1 span{color:#d4af37}
+.hero p{
+  font-size:17px;
+  color:#c0b8d8;
+  max-width:620px;
+  margin:0 auto 36px;
+  font-weight:300;
+}
+
+/* ===== CTA Buttons ===== */
+.cta-group{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  justify-content:center;
+  margin-bottom:16px;
+}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#d4af37;
+  color:#0f0b1f;
+  font-size:16px;font-weight:700;
+  padding:14px 32px;
+  border-radius:50px;
+  text-decoration:none;
+  transition:transform .2s,box-shadow .2s;
+  white-space:nowrap;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,175,55,.35)}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.08);
+  color:#e8e0f0;
+  font-size:15px;font-weight:600;
+  padding:13px 28px;
+  border-radius:50px;
+  border:1px solid rgba(255,255,255,0.2);
+  text-decoration:none;
+  transition:background .2s,transform .2s;
+}
+.btn-secondary:hover{background:rgba(255,255,255,0.14);transform:translateY(-2px)}
+
+/* 小さい補足文 */
+.hero-note{font-size:12px;color:#7a7090;margin-top:6px}
+
+/* ===== Features ===== */
+.features{padding:60px 0}
+.section-label{
+  text-align:center;
+  font-size:12px;font-weight:600;
+  letter-spacing:.12em;
+  color:#d4af37;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+.section-title{
+  text-align:center;
+  font-size:clamp(22px,3.5vw,32px);
+  font-weight:700;
+  color:#fff;
+  margin-bottom:10px;
+}
+.section-sub{
+  text-align:center;
+  color:#9a90b8;
+  font-size:15px;
+  margin-bottom:48px;
+  font-weight:300;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:24px;
+}
+.feature-card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:16px;
+  padding:28px 24px;
+  transition:transform .2s,border-color .2s;
+}
+.feature-card:hover{transform:translateY(-4px);border-color:rgba(212,175,55,.4)}
+.feature-icon{
+  font-size:32px;
+  margin-bottom:14px;
+  display:block;
+}
+.feature-card h3{
+  font-size:17px;font-weight:700;
+  color:#fff;
+  margin-bottom:10px;
+}
+.feature-card p{
+  font-size:14px;
+  color:#9a90b8;
+  line-height:1.7;
+}
+
+/* ===== Plans ===== */
+.plans{padding:60px 0}
+.plan-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  margin-top:40px;
+}
+.plan-card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:16px;
+  padding:28px 22px;
+  position:relative;
+}
+.plan-card.popular{
+  border-color:#d4af37;
+  background:rgba(212,175,55,.06);
+}
+.popular-badge{
+  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  background:#d4af37;color:#0f0b1f;
+  font-size:11px;font-weight:700;
+  padding:4px 16px;border-radius:50px;
+  white-space:nowrap;
+}
+.plan-name{
+  font-size:14px;font-weight:600;
+  color:#9a90b8;letter-spacing:.05em;
+  margin-bottom:8px;
+}
+.plan-price{
+  font-size:28px;font-weight:700;
+  color:#fff;
+  margin-bottom:4px;
+}
+.plan-price span{font-size:14px;font-weight:400;color:#9a90b8}
+.plan-desc{
+  font-size:13px;color:#7a7090;
+  margin-bottom:18px;
+  line-height:1.6;
+}
+.plan-features{list-style:none;margin:0;padding:0}
+.plan-features li{
+  font-size:13px;color:#c0b8d8;
+  padding:5px 0;
+  display:flex;align-items:flex-start;gap:8px;
+}
+.plan-features li::before{content:'✦';color:#d4af37;font-size:11px;margin-top:3px;flex-shrink:0}
+
+/* ===== Screenshots ===== */
+.screenshots{padding:60px 0}
+.sc-scroll{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  padding:8px 4px 20px;
+  scrollbar-width:thin;
+  scrollbar-color:#3a2f5a transparent;
+  -webkit-overflow-scrolling:touch;
+  /* ★ Speed fix 3: will-change でスクロール最適化 */
+  will-change:scroll-position;
+}
+.sc-scroll::-webkit-scrollbar{height:4px}
+.sc-scroll::-webkit-scrollbar-track{background:transparent}
+.sc-scroll::-webkit-scrollbar-thumb{background:#3a2f5a;border-radius:4px}
+.sc-scroll img{
+  height:280px;
+  width:auto;
+  flex-shrink:0;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.1);
+  object-fit:cover;
+  /* ★ Speed fix 3: lazy load */
+}
+
+/* ===== PDF CTA ===== */
+.pdf-cta{
+  text-align:center;
+  padding:40px 20px;
+  background:rgba(212,175,55,.05);
+  border:1px solid rgba(212,175,55,.2);
+  border-radius:20px;
+  margin:40px 0 60px;
+}
+.pdf-cta h3{
+  font-size:20px;font-weight:700;
+  color:#fff;margin-bottom:10px;
+}
+.pdf-cta p{
+  font-size:14px;color:#9a90b8;
+  margin-bottom:24px;
+}
+
+/* ===== Download Section ===== */
+.download{
+  padding:70px 0;
+  text-align:center;
+  background:rgba(255,255,255,.02);
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.download h2{
+  font-size:clamp(22px,3.5vw,32px);
+  font-weight:700;color:#fff;
+  margin-bottom:12px;
+}
+.download p{color:#9a90b8;font-size:15px;margin-bottom:36px}
+.store-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+  justify-content:center;
+}
+.store-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.18);
+  border-radius:12px;
+  padding:12px 24px;
+  text-decoration:none;
+  color:#fff;
+  font-size:14px;
+  font-weight:600;
+  transition:background .2s,transform .2s;
+  min-width:180px;
+}
+.store-btn:hover{background:rgba(255,255,255,0.12);transform:translateY(-2px)}
+.store-btn .store-icon{font-size:26px;line-height:1}
+.store-btn .store-text{text-align:left}
+.store-btn .store-sub{display:block;font-size:10px;font-weight:400;color:#9a90b8}
+.store-btn .store-name{display:block;font-size:15px;font-weight:700}
+
+/* ===== Footer ===== */
+footer{
+  text-align:center;
+  padding:32px 20px;
+  color:#4a4060;
+  font-size:13px;
+}
+footer a{color:#6a5e90;text-decoration:none}
+footer a:hover{color:#d4af37}
+
+/* ===== Responsive ===== */
+@media(max-width:640px){
+  .hero{padding:40px 16px 36px}
+  .sc-scroll img{height:220px}
+  .store-btn{min-width:calc(50% - 8px)}
+}
+</style>
 </head>
 <body>
-    <header><img src="header-visual.png" style="width:100%;" alt="Header"></header>
-    
-    <main class="container">
-        <div class="content-wrapper">
-            <div class="main-text">
-                <h1>เปิดรหัสลับแห่งชีวิต: ปลดล็อกความสำเร็จด้วยโหราศาสตร์เวท</h1>
-                <p>สัมผัสภูมิปัญญาเวทโบราณที่แม่นยำที่สุดผ่านระบบ AI อัจฉริยะ เข้าใจดวงชะตาของคุณได้ง่ายๆ ในทุกมิติชีวิต</p>
-                <h2>ทำไมต้อง Veda Center?</h2>
-                <ul>
-                    <li>วิเคราะห์แม่นยำ: เจาะลึกดวงชะตาเวทอย่างละเอียด พร้อมคำแนะนำ</li>
-                    <li>ครบทุกเรื่อง: ความรัก การงาน การเงิน และสุขภาพ</li>
-                    <li>ใช้งานง่าย: ระบบ AI วิเคราะห์และสรุปผลให้ทันที</li>
-                </ul>
-            </div>
-           <div class="download-section">
-    <h2>ดาวน์โหลดเลย!</h2>
-    <a href="https://vedacenter.jp/jyotish-th/" class="download-button">
-        <img src="download-ios.png" alt="iOS">
-    </a>
-    <a href="https://vedacenter.jp/jyotish-th/" class="download-button">
-        <img src="download-android.png" alt="Android">
-    </a>
-    <a href="https://vedacenter.jp/jyotish-th/" class="download-button">
-        <img src="download-pc.png" alt="PC">
-    </a>
-</div>
-        </div>
 
-        <section class="sc-section">
+<!-- Header Image -->
+<header class="site-header">
+  <img src="header-visual.png" alt="Veda Center — ผลการวิเคราะห์ดวงชะตาเวทอินเดีย" width="1200" height="420">
+</header>
 
-    <h2>ภาพตัวอย่างการใช้งานและผลลัพธ์</h2>
-    
-    <div class="sc-gallery">
-        <img src="sc-1.jpg" alt="UI 1">
-        <img src="sc-2.png" alt="UI 2">
-        <img src="sc-3.jpg" alt="UI 3">
-        <img src="sc-4.png" alt="UI 4">
-        <img src="sc-PDF.png" alt="PDF Sample">
-        <img src="sc-mail.png" alt="Mail Sample">
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">🌟 AI × โหราศาสตร์เวท (โชติษะ)</div>
+    <h1>เปิดรหัสแห่งชีวิตด้วย<br><span>ดวงชะตาเวทอินเดีย</span></h1>
+    <p>วิเคราะห์ดวงชะตาโหราศาสตร์เวทอย่างลึกซึ้ง ด้วยระบบ AI ที่ผสมผสานภูมิปัญญาพระเวทกับเทคโนโลยีสมัยใหม่</p>
+    <div class="cta-group">
+      <a href="https://vedacenter.jp/jyotish-th/" class="btn-primary">
+        🔮 เริ่มวิเคราะห์ดวงชะตา
+      </a>
+      <a href="https://drive.google.com/file/d/15uv755RzFNNwFOxfUq4SSOApueuFyvJV/view?usp=sharing" target="_blank" rel="noopener" class="btn-secondary">
+        📄 ดูตัวอย่างรายงาน PDF
+      </a>
     </div>
-    
-    <div class="pdf-link-box">
-        <a href="https://drive.google.com/file/d/15uv755RzFNNwFOxfUq4SSOApueuFyvJV/view?usp=sharing" target="_blank" class="pdf-link">
-            ดูตัวอย่างรายงานผลลัพธ์ฉบับเต็ม (PDF)
-        </a>
-    </div>
+    <p class="hero-note">ฟรีสำหรับการวิเคราะห์เบื้องต้น • ไม่ต้องติดตั้งแอป</p>
+  </div>
 </section>
 
-    </main>
+<!-- Features -->
+<section class="features">
+  <div class="container">
+    <p class="section-label">คุณสมบัติหลัก</p>
+    <h2 class="section-title">ทำไมต้อง Veda Center?</h2>
+    <p class="section-sub">ระบบวิเคราะห์ดวงชะตาที่ครอบคลุมที่สุด สำหรับผู้ที่ต้องการความแม่นยำในแบบโหราศาสตร์คลาสสิก</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="feature-icon">🪐</span>
+        <h3>วิเคราะห์ชาร์ตเวท (D-1 ถึง D-10)</h3>
+        <p>คำนวณ Lagna, Navamsha, Dashamsha พร้อมตำแหน่งดาวและราศีครบถ้วน อ้างอิงตามคัมภีร์ Parashara โดยตรง</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">⏳</span>
+        <h3>ระบบ Dasha ที่แม่นยำ</h3>
+        <p>วิเคราะห์ Maha Dasha, Antar Dasha และ Pratyantar ด้วยการคำนวณ Vimshottari ที่ผ่านการตรวจสอบแล้ว</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🤖</span>
+        <h3>AI GPT-4 เฉพาะทาง</h3>
+        <p>AI ที่ฝึกด้วยกฎโหราศาสตร์เวทคลาสสิก ตอบคำถามเฉพาะด้าน ไม่ใช่ทั่วไป — ตอบเป็นภาษาไทยทุกคำตอบ</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">💬</span>
+        <h3>ถามเพิ่มเติมได้</h3>
+        <p>ระบบรองรับการถามต่อเนื่อง ถามได้ถึง 3 ข้อ พร้อมการวิเคราะห์เพิ่มเติม 1-2 รอบ ตามแพ็กเกจ</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📊</span>
+        <h3>รายงาน PDF พร้อมพิมพ์</h3>
+        <p>ส่งออกผลการวิเคราะห์เป็น PDF ครบทุกหน้า รวมชาร์ตโหราศาสตร์, ตาราง Dasha และคำแนะนำ</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📧</span>
+        <h3>รับผลทางอีเมล</h3>
+        <p>ส่งผลการวิเคราะห์ไปยังอีเมลได้โดยตรง เก็บไว้อ้างอิงได้ตลอด ไม่ต้องจดบันทึกเอง</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Plans -->
+<section class="plans">
+  <div class="container">
+    <p class="section-label">แพ็กเกจ</p>
+    <h2 class="section-title">เลือกแพ็กเกจที่เหมาะกับคุณ</h2>
+    <p class="section-sub">เริ่มต้นฟรี หรืออัปเกรดเพื่อรับการวิเคราะห์เชิงลึก</p>
+
+    <div class="plan-grid">
+      <div class="plan-card">
+        <div class="plan-name">FREE</div>
+        <div class="plan-price">฿0</div>
+        <div class="plan-desc">ทดลองใช้งาน วิเคราะห์จาก Moon Sign + Nakshatra</div>
+        <ul class="plan-features">
+          <li>วิเคราะห์จากราศีจันทร์และนักษัตร</li>
+          <li>บุคลิกภาพและแนวโน้มชีวิต</li>
+          <li>1 ครั้งต่อเซสชัน</li>
+        </ul>
+      </div>
+
+      <div class="plan-card popular">
+        <div class="popular-badge">⭐ แนะนำ</div>
+        <div class="plan-name">STANDARD</div>
+        <div class="plan-price">¥1,980 <span>/ ครั้ง</span></div>
+        <div class="plan-desc">วิเคราะห์ครบ Lagna, House, Dasha พร้อมถามเพิ่มเติม</div>
+        <ul class="plan-features">
+          <li>ชาร์ตเต็ม + ตำแหน่งดาวทุกดวง</li>
+          <li>Maha Dasha + Antar Dasha</li>
+          <li>ถามได้ 3 ข้อ + ถามเพิ่มเติม 1 รอบ</li>
+          <li>ส่งออก PDF + อีเมล</li>
+        </ul>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-name">PREMIUM</div>
+        <div class="plan-price">¥2,970 <span>/ ครั้ง</span></div>
+        <div class="plan-desc">เพิ่ม Transit, การวิเคราะห์เชิงลึก และ Upaya เบื้องต้น</div>
+        <ul class="plan-features">
+          <li>ทุกอย่างใน Standard</li>
+          <li>Transit analysis (โคจรปัจจุบัน)</li>
+          <li>ถามเพิ่มเติมได้ 2 รอบ</li>
+          <li>Upaya เบื้องต้น (สี, ทิศ, ตัวเลข)</li>
+        </ul>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-name">PRO / อาจารย์</div>
+        <div class="plan-price">¥3,850 <span>/ ครั้ง</span></div>
+        <div class="plan-desc">ระดับผู้เชี่ยวชาญ รวมการสั่งจ่าย Mantra, Yajna, อัญมณี</div>
+        <ul class="plan-features">
+          <li>ทุกอย่างใน Premium</li>
+          <li>Bija Mantra + Mula Mantra</li>
+          <li>Graha Yajna + อัญมณีแนะนำ</li>
+          <li>บันทึกสำหรับอาจารย์/ผู้สอน</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Screenshots -->
+<section class="screenshots">
+  <div class="container">
+    <p class="section-label">ตัวอย่างการใช้งาน</p>
+    <h2 class="section-title">ภาพหน้าจอและตัวอย่างผลลัพธ์</h2>
+    <p class="section-sub">ดูว่าระบบทำงานอย่างไร และผลการวิเคราะห์มีรายละเอียดแค่ไหน</p>
+
+    <div class="sc-scroll">
+      <!-- ★ Speed fix: loading="lazy" + width/height を明示 -->
+      <img src="sc-1.jpg"    alt="หน้าหลักแอป"           loading="lazy" width="140" height="280">
+      <img src="sc-2.png"    alt="ชาร์ตโหราศาสตร์"       loading="lazy" width="140" height="280">
+      <img src="sc-3.jpg"    alt="ผลการวิเคราะห์"         loading="lazy" width="140" height="280">
+      <img src="sc-4.png"    alt="ตาราง Dasha"            loading="lazy" width="140" height="280">
+      <img src="sc-PDF.png"  alt="ตัวอย่างรายงาน PDF"    loading="lazy" width="140" height="280">
+      <img src="sc-mail.png" alt="รับผลทางอีเมล"          loading="lazy" width="140" height="280">
+    </div>
+
+    <div class="pdf-cta">
+      <h3>📄 ดูตัวอย่างรายงานฉบับเต็ม</h3>
+      <p>รายงาน PDF จริง 3 หน้า — ชาร์ต, การวิเคราะห์, และคำแนะนำเชิงปฏิบัติ</p>
+      <a href="https://drive.google.com/file/d/15uv755RzFNNwFOxfUq4SSOApueuFyvJV/view?usp=sharing"
+         target="_blank" rel="noopener" class="btn-primary">
+        เปิดดูรายงาน PDF →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Download / Access -->
+<section class="download">
+  <div class="container">
+    <h2>เริ่มต้นใช้งานได้เลย</h2>
+    <p>ใช้งานผ่านเว็บ, สมาร์ตโฟน หรือ PC ไม่ต้องติดตั้งแอป</p>
+
+    <div class="store-buttons">
+      <a href="https://vedacenter.jp/jyotish-th/" class="store-btn">
+        <span class="store-icon">🌐</span>
+        <span class="store-text">
+          <span class="store-sub">เปิดในเบราว์เซอร์</span>
+          <span class="store-name">Web App</span>
+        </span>
+      </a>
+
+      <!-- Android: Intentリンク（5秒問題の解決策） -->
+      <a href="https://vedacenter.jp/jyotish-th/" class="store-btn"
+         id="android-btn">
+        <span class="store-icon">🤖</span>
+        <span class="store-text">
+          <span class="store-sub">เปิดใน Android</span>
+          <span class="store-name">Android App</span>
+        </span>
+      </a>
+
+      <a href="https://vedacenter.jp/jyotish-th/" class="store-btn">
+        <span class="store-icon">🍎</span>
+        <span class="store-text">
+          <span class="store-sub">เปิดใน iOS</span>
+          <span class="store-name">iPhone / iPad</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p style="margin-bottom:8px;font-size:16px;font-weight:600;color:#9a90b8">
+      VEDA CENTER
+    </p>
+    <p>
+      <a href="https://vedacenter.jp/" target="_blank" rel="noopener">vedacenter.jp</a>
+      &nbsp;·&nbsp;
+      <a href="https://vedacenter.jp/jyotish-th/" target="_blank" rel="noopener">เริ่มวิเคราะห์ดวงชะตา</a>
+    </p>
+    <p style="margin-top:16px">© 2025 VEDA CENTER — Vedic Astrology AI</p>
+  </div>
+</footer>
+
+<script>
+// ★ Speed fix 4: Android アプリへのディープリンク（5秒問題の解消）
+// Intent URLを使うことで、アプリがインストール済みの場合は即座に起動
+// インストールされていない場合はWebにフォールバック
+(function(){
+  var androidBtn = document.getElementById('android-btn');
+  if(!androidBtn) return;
+
+  var APP_PACKAGE = 'jp.vedacenter.jyotish2'; // Androidアプリのパッケージ名
+  var WEB_URL = 'https://vedacenter.jp/jyotish-th/';
+
+  // User Agentでandroidか判定
+  var isAndroid = /Android/i.test(navigator.userAgent);
+  if(!isAndroid) return; // Android以外はそのままWeb
+
+  androidBtn.addEventListener('click', function(e){
+    e.preventDefault();
+
+    // Intent URL: アプリがあれば即起動、なければPlayStoreへ
+    var intentUrl = 'intent://#Intent;'
+      + 'package=' + APP_PACKAGE + ';'
+      + 'scheme=https;'
+      + 'action=android.intent.action.VIEW;'
+      + 'S.browser_fallback_url=' + encodeURIComponent(WEB_URL) + ';'
+      + 'end';
+
+    // Intent URLに飛ぶ → アプリがなければ browser_fallback_url に即フォールバック
+    window.location.href = intentUrl;
+  });
+})();
+</script>
+
 </body>
 </html>
