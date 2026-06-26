@@ -7,72 +7,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root { --deep-blue: #0f172a; --gold: #d4af37; --white: #ffffff; }
-        body { font-family: 'Kanit', sans-serif; margin: 0; background-color: var(--white); color: #333; line-height: 1.6; }
+        body { font-family: 'Kanit', sans-serif; margin: 0; background-color: #f4f4f9; color: #333; line-height: 1.6; }
         .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
         
-        /* Hero Section */
-        .hero { background: linear-gradient(135deg, var(--deep-blue), #1e293b); color: var(--white); padding: 80px 20px; text-align: center; }
-        h1 { font-size: 2.5rem; margin-bottom: 20px; line-height: 1.2; }
-        .hero p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; }
-        .cta-btn { background: var(--gold); color: var(--deep-blue); padding: 18px 40px; font-size: 1.2rem; font-weight: 700; border-radius: 50px; text-decoration: none; display: inline-block; transition: transform 0.3s; }
-        .cta-btn:hover { transform: scale(1.05); }
+        /* Hero */
+        .hero { background: linear-gradient(135deg, var(--deep-blue), #1e293b); color: var(--white); padding: 60px 20px; text-align: center; }
+        h1 { font-size: 2rem; margin-bottom: 20px; }
+        .cta-btn { background: var(--gold); color: var(--deep-blue); padding: 15px 30px; font-weight: 700; border-radius: 50px; text-decoration: none; display: inline-block; }
 
-        /* Sections */
-        .section { padding: 60px 0; }
-        h2 { text-align: center; color: var(--deep-blue); font-size: 2rem; margin-bottom: 40px; }
+        /* Download Section */
+        .download-box { background: #fff; padding: 30px; border-radius: 20px; margin: 20px 0; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .dl-btns { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+        .dl-btns img { height: 50px; }
+
+        /* Screenshots */
+        .sc-gallery { display: flex; overflow-x: auto; gap: 15px; padding: 20px 0; }
+        .sc-gallery img { height: 250px; border-radius: 10px; }
+        .sc-full { width: 100%; border-radius: 10px; margin-top: 10px; }
         
-        /* Problem Cards */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .card { background: #f8fafc; padding: 25px; border-radius: 15px; border: 1px solid #e2e8f0; text-align: center; }
-        
-        /* AI Section */
-        .ai-box { background: var(--deep-blue); color: var(--white); padding: 40px; border-radius: 20px; text-align: center; }
-        
-        /* Trust & About */
-        .trust { text-align: center; background: #fffbf0; padding: 40px; border-radius: 20px; border: 1px solid var(--gold); }
-        
-        @media (max-width: 768px) { h1 { font-size: 1.8rem; } }
+        .pdf-box { text-align: center; padding: 20px; }
+        .pdf-link { color: var(--gold); font-weight: bold; }
     </style>
 </head>
 <body>
-
     <section class="hero">
-        <h1>แอป AI โหราศาสตร์เวทอินเดีย<br>ค้นพบเส้นทางชีวิตของคุณ</h1>
-        <p>ด้วยพลัง AI และศาสตร์โหราศาสตร์อินเดียโบราณที่แม่นยำที่สุด</p>
+        <h1>แอป AI โหราศาสตร์เวทอินเดีย</h1>
+        <p>ค้นพบเส้นทางชีวิตของคุณ ด้วย AI และศาสตร์โหราศาสตร์อินเดียโบราณ</p>
         <a href="#" class="cta-btn">ทดลองใช้ฟรีตอนนี้</a>
     </section>
 
     <main class="container">
-        <section class="section">
-            <h2>คุณกำลังสงสัยเรื่องเหล่านี้หรือไม่?</h2>
-            <div class="grid">
-                <div class="card">งานของฉันจะเติบโตเมื่อไร</div>
-                <div class="card">ความรักครั้งนี้จะสมหวังหรือไม่</div>
-                <div class="card">ควรเปลี่ยนงานหรือไม่</div>
-                <div class="card">ช่วงไหนควรระวังปัญหาชีวิต</div>
+        <section class="download-box">
+            <h2>ดาวน์โหลดแอป</h2>
+            <div class="dl-btns">
+                <a href="#"><img src="download-ios.png" alt="iOS"></a>
+                <a href="#"><img src="download-android.png" alt="Android"></a>
+                <a href="#"><img src="download-pc.png" alt="PC"></a>
             </div>
         </section>
 
-        <section class="section ai-box">
-            <h2>AI วิเคราะห์ดวงชะตาอย่างละเอียด</h2>
-            <p>วิเคราะห์อัตโนมัติ แม่นยำตามหลักโหราศาสตร์เวท รายงานผลในไม่กี่วินาที</p>
+        <section>
+            <h2>ภาพตัวอย่างการใช้งาน</h2>
+            <div class="sc-gallery">
+                <img src="sc-1.jpg" alt="UI 1"><img src="sc-2.png" alt="UI 2"><img src="sc-3.jpg" alt="UI 3"><img src="sc-4.png" alt="UI 4">
+            </div>
+            <img src="sc-PDF1.png" alt="PDF" class="sc-full">
+            <img src="sc-mail.png" alt="Mail" class="sc-full">
+            <div class="pdf-box">
+                <a href="https://drive.google.com/file/d/15uv755RzFNNwFOxfUq4SSOApueuFyvJV/view?usp=sharing" target="_blank" class="pdf-link">ดูตัวอย่างรายงานผลลัพธ์ฉบับเต็ม (PDF)</a>
+            </div>
         </section>
-
-        <section class="section trust">
-            <h2>เกี่ยวกับเรา</h2>
-            <p><strong>Veda Center ประเทศญี่ปุ่น</strong><br>
-            ศูนย์การเรียนรู้ศาสตร์อินเดียโบราณ ดำเนินกิจกรรมมากว่า 20 ปี<br>
-            พัฒนาโดย Masaki Todo ผู้เชี่ยวชาญจากประเทศญี่ปุ่น</p>
-        </section>
-
-        <div style="text-align: center; padding: 40px 0;">
-            <a href="#" class="cta-btn">ทดลองใช้ฟรีตอนนี้</a>
-        </div>
     </main>
-
-    <footer style="background:#0f172a; color:#fff; text-align:center; padding:20px;">
-        <p>&copy; 2026 OFFICE TODO. All rights reserved.</p>
-    </footer>
-
 </body>
 </html>
