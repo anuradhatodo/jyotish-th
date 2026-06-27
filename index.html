@@ -117,6 +117,25 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .store-btn .store-sub{display:block;font-size:10px;font-weight:400;color:#9a90b8}
 .store-btn .store-name{display:block;font-size:15px;font-weight:700}
 
+/* ===== 診断に必要な情報 ===== */
+.required-info{padding:60px 0}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.info-card{border-radius:16px;padding:24px;border:1px solid rgba(255,255,255,.1)}
+.info-required{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12)}
+.info-important{background:rgba(212,175,55,.05);border-color:rgba(212,175,55,.3)}
+.info-auto{background:rgba(111,216,122,.04);border-color:rgba(111,216,122,.2)}
+.info-card-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px}
+.info-icon{font-size:28px;flex-shrink:0;margin-top:2px}
+.info-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 10px;border-radius:50px;margin-bottom:6px;letter-spacing:.04em}
+.info-tag.required{background:rgba(212,175,55,.2);color:#d4af37;border:1px solid rgba(212,175,55,.4)}
+.info-tag.important{background:rgba(212,100,50,.2);color:#e8905a;border:1px solid rgba(212,100,50,.4)}
+.info-tag.auto{background:rgba(111,216,122,.15);color:#6fd87a;border:1px solid rgba(111,216,122,.3)}
+.info-card h3{font-size:16px;font-weight:700;color:#fff;margin:0}
+.info-card p{font-size:13px;color:#9a90b8;line-height:1.8}
+.info-note{margin-top:14px;background:rgba(0,0,0,.2);border-radius:10px;padding:12px 14px;font-size:12px;color:#c0b0d8;line-height:1.9}
+.auto-list{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.auto-list li{font-size:13px;color:#9a90b8;display:flex;align-items:center;gap:8px}
+
 /* ===== プリペイドカードセクション ===== */
 .prepaid{padding:60px 0}
 .prepaid-tabs{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:40px}
@@ -148,6 +167,7 @@ footer a:hover{color:#d4af37}
 
 /* ===== Responsive ===== */
 @media(max-width:768px){
+  .info-grid{grid-template-columns:1fr}
   .prepaid-tabs{grid-template-columns:1fr}
   .prepaid-col{padding:20px 16px}
 
@@ -190,6 +210,81 @@ footer a:hover{color:#d4af37}
       <a href="https://drive.google.com/file/d/15uv755RzFNNwFOxfUq4SSOApueuFyvJV/view?usp=sharing" target="_blank" rel="noopener" class="btn-secondary">📄 ดูตัวอย่างรายงาน PDF</a>
     </div>
     <p class="hero-note">ฟรีสำหรับการวิเคราะห์เบื้องต้น • ไม่ต้องติดตั้งแอป</p>
+  </div>
+</section>
+
+<!-- 診断に必要な情報 -->
+<section class="required-info">
+  <div class="container">
+    <p class="section-label">ก่อนเริ่มใช้งาน</p>
+    <h2 class="section-title">📋 ข้อมูลที่ต้องเตรียม</h2>
+    <p class="section-sub">เตรียมข้อมูลเหล่านี้ไว้ล่วงหน้า เพื่อผลการวิเคราะห์ที่แม่นยำที่สุด</p>
+
+    <div class="info-grid">
+
+      <div class="info-card info-required">
+        <div class="info-card-header">
+          <span class="info-icon">📅</span>
+          <div>
+            <span class="info-tag required">จำเป็น</span>
+            <h3>วันเดือนปีเกิด</h3>
+          </div>
+        </div>
+        <p>วัน เดือน ปีเกิด (ปี ค.ศ.) — ข้อมูลพื้นฐานที่ขาดไม่ได้</p>
+      </div>
+
+      <div class="info-card info-important">
+        <div class="info-card-header">
+          <span class="info-icon">🕐</span>
+          <div>
+            <span class="info-tag important">สำคัญมาก</span>
+            <h3>เวลาเกิด</h3>
+          </div>
+        </div>
+        <p>ยิ่งแม่นยำยิ่งดี — เพราะดวงชะตาเปลี่ยนทุก <strong style="color:#d4af37">2 ชั่วโมง</strong><br>
+        ถ้าไม่ทราบเวลาเกิดแน่นอน สามารถระบุได้คร่าวๆ ระบบจะปรับความแม่นยำให้เอง</p>
+        <div class="info-note">
+          💡 <strong>ไม่ทราบเวลาเกิด?</strong><br>
+          สามารถขอบริการคัดเลือกเวลาเกิด (Birth Time Rectification) ได้<br>
+          กรอกข้อมูลที่ลิงก์ด้านล่าง — <span style="color:#e0a060">มีค่าบริการ (แยกต่างหาก)</span><br>
+          <a href="https://www.reservestock.jp/inquiry/148924" target="_blank" rel="noopener"
+             style="color:#d4af37;font-weight:700;text-decoration:underline">
+            → สมัครบริการคัดเลือกเวลาเกิด
+          </a>
+        </div>
+      </div>
+
+      <div class="info-card info-required">
+        <div class="info-card-header">
+          <span class="info-icon">📍</span>
+          <div>
+            <span class="info-tag required">จำเป็น</span>
+            <h3>สถานที่เกิด</h3>
+          </div>
+        </div>
+        <p>ชื่อจังหวัดหรือเมือง — ไม่จำเป็นต้องระบุแม่นมาก<br>
+        <span style="color:#6fd87a">✅ สำหรับคนเกิดในประเทศไทย — ระบุแค่จังหวัดก็เพียงพอ ความแตกต่างระหว่างจังหวัดมีน้อยมาก</span></p>
+      </div>
+
+      <div class="info-card info-auto">
+        <div class="info-card-header">
+          <span class="info-icon">⚙️</span>
+          <div>
+            <span class="info-tag auto">คำนวณอัตโนมัติ</span>
+            <h3>ระบบคำนวณให้เอง</h3>
+          </div>
+        </div>
+        <p>ข้อมูลต่อไปนี้ระบบคำนวณให้อัตโนมัติ <strong style="color:#d4af37">ไม่ต้องเตรียมเอง</strong></p>
+        <ul class="auto-list">
+          <li>📐 ละติจูด / ลองจิจูด ของสถานที่เกิด</li>
+          <li>🌙 ราศีจันทร์ (Moon Sign) — ราศีที่จันทร์อยู่ในวันเกิด</li>
+          <li>⭐ นักษัตร (Nakshatra) — กลุ่มดาวที่ดวงจันทร์อยู่</li>
+          <li>⏳ ทศา (Dasha) — ช่วงชีวิตที่ดาวแต่ละดวงมีอิทธิพล</li>
+          <li>🔭 ตำแหน่งดาวทุกดวงในขณะเกิด</li>
+        </ul>
+      </div>
+
+    </div>
   </div>
 </section>
 
