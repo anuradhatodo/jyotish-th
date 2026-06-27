@@ -117,6 +117,15 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .store-btn .store-sub{display:block;font-size:10px;font-weight:400;color:#9a90b8}
 .store-btn .store-name{display:block;font-size:15px;font-weight:700}
 
+/* ===== 誕生時間選定サービス説明 ===== */
+.rect-info{padding:60px 0 0}
+.rect-info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:0}
+.rect-info-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px}
+.rect-info-card.rect-info-price{border-color:rgba(212,175,55,.3);background:rgba(212,175,55,.05)}
+.rect-info-icon{font-size:28px;margin-bottom:12px}
+.rect-info-card h3{font-size:15px;font-weight:700;color:#fff;margin-bottom:10px}
+.rect-info-card p{font-size:13px;color:#9a90b8;line-height:1.8}
+
 /* ===== 誕生時間選定CTAバナー ===== */
 .rectification-cta{padding:20px 0 0}
 .rect-banner{
@@ -195,6 +204,7 @@ footer a:hover{color:#d4af37}
 
 /* ===== Responsive ===== */
 @media(max-width:768px){
+  .rect-info-grid{grid-template-columns:1fr}
   .rect-banner{flex-direction:column;text-align:center}
   .rect-banner-left{flex-direction:column;align-items:center;text-align:center}
   .rect-btn{width:100%;justify-content:center}
@@ -405,6 +415,43 @@ footer a:hover{color:#d4af37}
         </ul>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- 誕生時間選定サービス説明 -->
+<section class="rect-info">
+  <div class="container">
+    <p class="section-label">บริการเสริม</p>
+    <h2 class="section-title">🕐 บริการคัดเลือกเวลาเกิด คืออะไร?</h2>
+    <p class="section-sub">สำหรับผู้ที่ไม่ทราบเวลาเกิด หรือต้องการผลการวิเคราะห์ที่แม่นยำยิ่งขึ้น</p>
+
+    <div class="rect-info-grid">
+      <div class="rect-info-card">
+        <div class="rect-info-icon">⏰</div>
+        <h3>ทำไมเวลาเกิดถึงสำคัญ?</h3>
+        <p>ดวงชะตาเปลี่ยนทุก <strong style="color:#d4af37">2 ชั่วโมง</strong> หากเวลาเกิดผิดพลาด ลัคนา (Rising Sign) จะผิด และผลการวิเคราะห์ทั้งหมดจะคลาดเคลื่อน</p>
+      </div>
+      <div class="rect-info-card">
+        <div class="rect-info-icon">🔍</div>
+        <h3>วิธีการคัดเลือกเวลาเกิด</h3>
+        <p>ผู้เชี่ยวชาญวิเคราะห์จากเหตุการณ์สำคัญในชีวิตจริงของคุณ เปรียบเทียบกับดวงชะตาหลายเวลา เพื่อหาเวลาเกิดที่ตรงที่สุด</p>
+      </div>
+      <div class="rect-info-card">
+        <div class="rect-info-icon">✅</div>
+        <h3>ขั้นตอน</h3>
+        <p>① กรอกแบบฟอร์มพร้อมเหตุการณ์ในชีวิต<br>
+        ② ผู้เชี่ยวชาญวิเคราะห์และหาเวลาเกิด<br>
+        ③ รับเวลาเกิดที่ถูกต้องทางอีเมล<br>
+        ④ นำไปใช้วิเคราะห์ดวงชะตาได้เลย</p>
+      </div>
+      <div class="rect-info-card rect-info-price">
+        <div class="rect-info-icon">💰</div>
+        <h3>ค่าบริการ</h3>
+        <p><span style="font-size:24px;font-weight:700;color:#d4af37">¥5,000</span><br>
+        ผลภายใน 3-7 วันทำการ<br>
+        ชำระหลังได้รับใบแจ้งยอดทางอีเมล</p>
+      </div>
     </div>
   </div>
 </section>
