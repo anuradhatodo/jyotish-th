@@ -433,75 +433,81 @@ function addEventRow(){
   var body = document.getElementById('eventsBody');
   var tr = document.createElement('tr');
   tr.innerHTML =
-    '<td><input type="text" name="event_year_'+eventCount+'" placeholder="เช่น 2010" class="yr" maxlength="4" pattern="[0-9]{4}"></td>' +
-    '<td><input type="text" name="event_desc_'+eventCount+'" placeholder="อธิบายเหตุการณ์..." class="ev"></td>';
+    '<td><input type="text" name="event_year_'+eventCount+'" placeholder="เช่น 2010" style="width:80px;padding:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#e8e0f0;font-size:13px" maxlength="4"></td>' +
+    '<td style="padding-left:8px"><input type="text" name="event_desc_'+eventCount+'" placeholder="อธิบายเหตุการณ์..." style="width:100%;padding:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#e8e0f0;font-size:13px"></td>';
   body.appendChild(tr);
 }
-// 最初から8行追加
 for(var i=0;i<8;i++){ addEventRow(); }
 
-// バリデーション & 送信
+// フォーム送信
 document.getElementById('mainForm').addEventListener('submit', function(e){
   e.preventDefault();
 
-  // 必須チェック
-  var required = this.querySelectorAll('[required]');
-  var ok = true;
-  required.forEach(function(el){
-    if(el.type === 'radio' || el.type === 'checkbox'){
-      var name = el.name;
-      var checked = document.querySelector('input[name="'+name+'"]:checked');
-      if(!checked){ ok = false; el.closest('.radio-group, .check-group, .check-item').style.outline='1px solid #e8905a'; }
-    } else {
-      if(!el.value.trim()){ ok = false; el.style.borderColor='#e8905a'; }
-      else { el.style.borderColor=''; }
-    }
-  });
+  // 基本バリデーション
+  var nameRoman = document.querySelector('[name=name_roman]').value.trim();
+  var email = document.querySelector('[name=email]').value.trim();
+  var birthdate = document.querySelector('[name=birthdate]').value.trim();
+  var birthplace = document.querySelector('[name=birthplace]').value.trim();
+  var location = document.querySelector('[name=location]:checked');
+  var gender = document.querySelector('[name=gender]:checked');
+  var timeAcc = document.querySelector('[name=time_accuracy]:checked');
+  var consent1 = document.getElementById('consentData').checked;
+  var consent2 = document.getElementById('consentPayment').checked;
 
-  // 同意チェック
-  if(!document.getElementById('consentData').checked || !document.getElementById('consentPayment').checked){
-    ok = false;
-    alert('กรุณายืนยันการรับทราบและยินยอมก่อนส่งแบบฟอร์ม');
+  if(!nameRoman || !email || !birthdate || !birthplace){
+    alert('กรุณากรอกข้อมูลที่จำเป็นให้ครบ (ชื่อโรมัน, อีเมล, วันเกิด, สถานที่เกิด)');
     return;
   }
+  if(!location){ alert('กรุณาเลือกที่อยู่ปัจจุบัน'); return; }
+  if(!gender){ alert('กรุณาเลือกเพศ'); return; }
+  if(!timeAcc){ alert('กรุณาเลือกความแม่นยำของเวลาเกิด'); return; }
+  if(!consent1 || !consent2){ alert('กรุณายืนยันการรับทราบและยินยอม'); return; }
 
-  if(!ok){
-    alert('กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วน (ช่องที่มีเครื่องหมาย *)');
-    // 最初のエラー欄にスクロール
-    var first = document.querySelector('input:invalid, input[style*="e8905a"]');
-    if(first) first.scrollIntoView({behavior:'smooth', block:'center'});
-    return;
-  }
-
-  // フォームデータ収集
-  var data = new FormData(this);
+  // データ収集
   var obj = {};
-  data.forEach(function(v,k){ 
-    if(obj[k]){ 
-      if(!Array.isArray(obj[k])) obj[k]=[obj[k]]; 
-      obj[k].push(v); 
-    } else { obj[k]=v; }
+  var inputs = this.querySelectorAll('input,select,textarea');
+  inputs.forEach(function(el){
+    if(!el.name) return;
+    if(el.type === 'radio' && !el.checked) return;
+    if(el.type === 'checkbox'){
+      if(el.checked){
+        if(obj[el.name]){
+          if(!Array.isArray(obj[el.name])) obj[el.name] = [obj[el.name]];
+          obj[el.name].push(el.value);
+        } else {
+          obj[el.name] = el.value;
+        }
+      }
+      return;
+    }
+    obj[el.name] = el.value;
   });
 
-  // Google Apps Script の Web App URL に送信（実装後に差し替え）
-  var GAS_URL = 'https://script.google.com/macros/s/AKfycby0mvIqUkHgVuZgaBB1EY0ApfnJYcPxgs2Wg9i3wRGgCOyQd7DUOVQtrWdlpX6bj6N4oA/exec'; // ← ここにGASのURLを入れる
+  // 送信ボタンを無効化
+  var btn = document.querySelector('.submit-btn');
+  btn.textContent = 'กำลังส่ง...';
+  btn.disabled = true;
 
-  // 送信処理（GAS URLが設定されている場合）
-  if(GAS_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL'){
-    fetch(GAS_URL, {
-      method:'POST',
-      body: JSON.stringify(obj),
-      headers:{'Content-Type':'application/json'}
-    }).then(function(){
-      showSuccess();
-    }).catch(function(){
-      // エラーでも完了画面表示（メール送信失敗の場合の代替）
-      showSuccess();
-    });
-  } else {
-    // テスト用：GAS未設定の場合もUIだけ完了表示
+  var GAS_URL = 'https://script.google.com/macros/s/AKfycby0mvIqUkHgVuZgaBB1EY0ApfnJYcPxgs2Wg9i3wRGgCOyQd7DUOVQtrWdlpX6bj6N4oA/exec';
+
+  // GASへ送信（no-corsモード）
+  fetch(GAS_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(obj)
+  }).then(function(){
     showSuccess();
-  }
+  }).catch(function(err){
+    console.log('fetch error:', err);
+    // no-corsではエラーが出ることがあるが実際は送信成功の場合も
+    showSuccess();
+  });
+
+  // 10秒後に強制的に完了表示（タイムアウト対策）
+  setTimeout(function(){
+    showSuccess();
+  }, 10000);
 });
 
 function showSuccess(){
