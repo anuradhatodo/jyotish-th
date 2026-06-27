@@ -117,6 +117,34 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .store-btn .store-sub{display:block;font-size:10px;font-weight:400;color:#9a90b8}
 .store-btn .store-name{display:block;font-size:15px;font-weight:700}
 
+/* ===== 誕生時間選定CTAバナー ===== */
+.rectification-cta{padding:20px 0 0}
+.rect-banner{
+  background:rgba(212,175,55,.07);
+  border:1px solid rgba(212,175,55,.3);
+  border-radius:20px;
+  padding:28px 32px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.rect-banner-left{display:flex;align-items:flex-start;gap:18px}
+.rect-banner-icon{font-size:36px;flex-shrink:0;margin-top:4px}
+.rect-banner h3{font-size:20px;font-weight:700;color:#fff;margin-bottom:8px}
+.rect-banner p{font-size:14px;color:#9a90b8;line-height:1.8}
+.rect-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#d4af37;color:#0f0b1f;
+  font-size:15px;font-weight:700;
+  padding:14px 28px;border-radius:50px;
+  text-decoration:none;white-space:nowrap;
+  transition:transform .2s,box-shadow .2s;
+  flex-shrink:0;
+}
+.rect-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,175,55,.35)}
+
 /* ===== 診断に必要な情報 ===== */
 .required-info{padding:60px 0}
 .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
@@ -167,6 +195,9 @@ footer a:hover{color:#d4af37}
 
 /* ===== Responsive ===== */
 @media(max-width:768px){
+  .rect-banner{flex-direction:column;text-align:center}
+  .rect-banner-left{flex-direction:column;align-items:center;text-align:center}
+  .rect-btn{width:100%;justify-content:center}
   .info-grid{grid-template-columns:1fr}
   .prepaid-tabs{grid-template-columns:1fr}
   .prepaid-col{padding:20px 16px}
@@ -207,7 +238,7 @@ footer a:hover{color:#d4af37}
     <p>วิเคราะห์ดวงชะตาโหราศาสตร์เวทอย่างลึกซึ้ง ด้วยระบบ AI ที่ผสมผสานภูมิปัญญาพระเวทกับเทคโนโลยีสมัยใหม่</p>
     <div class="cta-group">
       <a href="https://vedacenter.jp/jyotish-th/" class="btn-primary">🔮 เริ่มวิเคราะห์ดวงชะตา</a>
-      <a href="https://drive.google.com/file/d/1gFDXXpu7_5ZBMO4tHDp_8PHP86CpGARH/view?usp=sharing" target="_blank" rel="noopener" class="btn-secondary">📄 ดูตัวอย่างรายงาน PDF</a>
+      <a href="https://drive.google.com/file/d/15uv755RzFNNwFOxfUq4SSOApueuFyvJV/view?usp=sharing" target="_blank" rel="noopener" class="btn-secondary">📄 ดูตัวอย่างรายงาน PDF</a>
     </div>
     <p class="hero-note">ฟรีสำหรับการวิเคราะห์เบื้องต้น • ไม่ต้องติดตั้งแอป</p>
   </div>
@@ -247,9 +278,9 @@ footer a:hover{color:#d4af37}
           💡 <strong>ไม่ทราบเวลาเกิด?</strong><br>
           สามารถขอบริการคัดเลือกเวลาเกิด (Birth Time Rectification) ได้<br>
           กรอกข้อมูลที่ลิงก์ด้านล่าง — <span style="color:#e0a060">มีค่าบริการ (แยกต่างหาก)</span><br>
-          <a href="https://www.reservestock.jp/inquiry/148924" target="_blank" rel="noopener"
+          <a href="birth-time-form.html" target="_blank" rel="noopener"
              style="color:#d4af37;font-weight:700;text-decoration:underline">
-            → สมัครบริการคัดเลือกเวลาเกิด
+            → สมัครบริการคัดเลือกเวลาเกิด (กรอกแบบฟอร์ม)
           </a>
         </div>
       </div>
@@ -374,6 +405,26 @@ footer a:hover{color:#d4af37}
         </ul>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- 誕生時間選定CTAバナー -->
+<section class="rectification-cta">
+  <div class="container">
+    <div class="rect-banner">
+      <div class="rect-banner-left">
+        <div class="rect-banner-icon">🕐</div>
+        <div>
+          <h3>ไม่ทราบเวลาเกิด?</h3>
+          <p>บริการคัดเลือกเวลาเกิด (Birth Time Rectification)<br>
+          ผู้เชี่ยวชาญวิเคราะห์จากเหตุการณ์ในชีวิตจริงของคุณ<br>
+          <span style="color:#e0a060;font-size:13px">¥5,000 • ผลภายใน 3-7 วันทำการ</span></p>
+        </div>
+      </div>
+      <a href="birth-time-form.html" target="_blank" rel="noopener" class="rect-btn">
+        📋 กรอกแบบฟอร์มสมัคร
+      </a>
     </div>
   </div>
 </section>
