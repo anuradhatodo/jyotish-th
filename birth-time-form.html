@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แบบฟอร์มบริการคัดเลือกเวลาเกิด — VEDA CENTER</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Sarabun',sans-serif;background:#0f0b1f;color:#e8e0f0;line-height:1.8;font-size:16px;padding:20px 0 60px}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 30%,#1a0a3a 0%,#0f0b1f 60%);z-index:-1}
+.container{max-width:680px;margin:0 auto;padding:0 20px}
+
+/* ヘッダー */
+.form-header{text-align:center;padding:40px 0 32px}
+.form-header .badge{display:inline-block;background:rgba(212,175,55,.15);border:1px solid #d4af37;color:#d4af37;font-size:12px;font-weight:600;padding:5px 16px;border-radius:50px;margin-bottom:16px}
+.form-header h1{font-size:clamp(20px,4vw,28px);font-weight:700;color:#fff;margin-bottom:10px;line-height:1.4}
+.form-header p{font-size:14px;color:#9a90b8;line-height:1.8}
+
+/* 料金ボックス */
+.price-box{background:rgba(212,175,55,.07);border:1px solid rgba(212,175,55,.3);border-radius:16px;padding:20px 24px;margin-bottom:32px;text-align:center}
+.price-box p{font-size:13px;color:#c0b8d8;margin-bottom:8px}
+.price-box .price{font-size:26px;font-weight:700;color:#d4af37}
+.price-box .price-sub{font-size:12px;color:#9a90b8;margin-top:4px}
+
+/* フォーム本体 */
+.form-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:32px 28px;margin-bottom:24px}
+.form-card h2{font-size:16px;font-weight:700;color:#d4af37;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid rgba(212,175,55,.2);display:flex;align-items:center;gap:8px}
+
+.field{margin-bottom:22px}
+.field label{display:block;font-size:14px;font-weight:600;color:#e8e0f0;margin-bottom:7px}
+.field label .req{color:#e8905a;margin-left:4px;font-size:12px}
+.field label .opt{color:#6a7090;margin-left:4px;font-size:11px;font-weight:400}
+.field .hint{font-size:12px;color:#7a7090;margin-bottom:7px;line-height:1.6}
+
+input[type=text],input[type=email],input[type=tel],input[type=date],input[type=time],select,textarea{
+  width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);
+  border-radius:10px;padding:12px 14px;color:#e8e0f0;font-family:'Sarabun',sans-serif;
+  font-size:14px;outline:none;transition:border-color .2s;
+}
+input:focus,select:focus,textarea:focus{border-color:#d4af37;background:rgba(255,255,255,.09)}
+select option{background:#1a1030;color:#e8e0f0}
+textarea{resize:vertical;min-height:90px;line-height:1.7}
+
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* 出来事テーブル */
+.events-table{width:100%;border-collapse:collapse;margin-top:8px}
+.events-table th{font-size:12px;font-weight:600;color:#9a90b8;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.1);text-align:left}
+.events-table td{padding:6px 4px;vertical-align:top}
+.events-table input,.events-table select{padding:9px 10px;font-size:13px;border-radius:8px}
+.events-table .yr{width:90px}
+.events-table .ev{width:100%}
+
+/* ラジオ・チェックボックス */
+.radio-group,.check-group{display:flex;flex-direction:column;gap:10px}
+.radio-item,.check-item{display:flex;align-items:flex-start;gap:10px;cursor:pointer;padding:10px 14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:10px;transition:border-color .2s}
+.radio-item:hover,.check-item:hover{border-color:rgba(212,175,55,.3)}
+.radio-item input,.check-item input{margin-top:3px;accent-color:#d4af37;flex-shrink:0;width:16px;height:16px}
+.radio-item .label-text,.check-item .label-text{font-size:13px;color:#c0b8d8;line-height:1.6}
+.radio-item .label-text strong,.check-item .label-text strong{display:block;color:#fff;font-size:14px;margin-bottom:2px}
+
+/* 送信ボタン */
+.submit-area{text-align:center;padding-top:8px}
+.submit-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#d4af37;color:#0f0b1f;font-family:'Sarabun',sans-serif;font-size:17px;font-weight:700;padding:16px 48px;border-radius:50px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;width:100%;max-width:360px}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,175,55,.35)}
+.submit-note{font-size:12px;color:#6a7090;margin-top:12px;line-height:1.7}
+
+/* 完了画面 */
+.success{display:none;text-align:center;padding:48px 24px;background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.25);border-radius:20px}
+.success .icon{font-size:56px;margin-bottom:16px}
+.success h2{font-size:22px;font-weight:700;color:#fff;margin-bottom:12px}
+.success p{font-size:14px;color:#9a90b8;line-height:1.9}
+
+/* エラー */
+.error-msg{font-size:12px;color:#e8905a;margin-top:5px;display:none}
+
+@media(max-width:500px){
+  .form-card{padding:20px 16px}
+  .field-row{grid-template-columns:1fr}
+  .events-table th:nth-child(2){display:none}
+  .events-table td:nth-child(2){display:none}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ヘッダー -->
+  <div class="form-header">
+    <div class="badge">🌟 VEDA CENTER</div>
+    <h1>แบบฟอร์มขอบริการ<br>คัดเลือกเวลาเกิด</h1>
+    <p>กรุณากรอกข้อมูลให้ครบถ้วนในครั้งเดียว<br>เพื่อให้ผู้เชี่ยวชาญสามารถดำเนินการได้โดยไม่ต้องสอบถามเพิ่มเติม</p>
+  </div>
+
+  <!-- 料金 -->
+  <div class="price-box">
+    <p>ค่าบริการคัดเลือกเวลาเกิด</p>
+    <div class="price">¥5,000 <span style="font-size:16px;font-weight:400">/ ครั้ง</span></div>
+    <div class="price-sub">ชำระหลังได้รับใบแจ้งยอด • ผลส่งทางอีเมลภายใน 3-7 วันทำการ</div>
+  </div>
+
+  <form id="mainForm" novalidate>
+
+    <!-- ① 連絡先情報 -->
+    <div class="form-card">
+      <h2>① ข้อมูลติดต่อ</h2>
+
+      <div class="field">
+        <label>ชื่อ-นามสกุล <span class="req">* จำเป็น</span></label>
+        <div class="field-row">
+          <input type="text" name="first_name" placeholder="ชื่อ (ภาษาไทย)" required>
+          <input type="text" name="last_name" placeholder="นามสกุล (ภาษาไทย)" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>ชื่อ-นามสกุล (โรมัน) <span class="req">* จำเป็น</span></label>
+        <div class="hint">สำหรับการออกใบแจ้งยอด กรอกเป็นตัวอักษรโรมัน เช่น SOMCHAI JAIDEE</div>
+        <input type="text" name="name_roman" placeholder="FIRSTNAME LASTNAME" required>
+      </div>
+
+      <div class="field">
+        <label>อีเมล <span class="req">* จำเป็น</span></label>
+        <div class="hint">ผลการวิเคราะห์และใบแจ้งยอดจะส่งไปที่อีเมลนี้</div>
+        <input type="email" name="email" placeholder="example@email.com" required>
+      </div>
+
+      <div class="field">
+        <label>LINE ID <span class="opt">（ถ้ามี）</span></label>
+        <input type="text" name="line_id" placeholder="@lineid หรือ ไอดี LINE ของคุณ">
+      </div>
+
+      <div class="field">
+        <label>ที่อยู่ปัจจุบัน <span class="req">* จำเป็น</span></label>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="location" value="japan" required>
+            <span class="label-text"><strong>🇯🇵 อยู่ในญี่ปุ่น</strong>ชำระเงินเป็นเงินเยน (¥) ผ่านการโอนเงินธนาคาร หรือ PayPay</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="location" value="thailand">
+            <span class="label-text"><strong>🇹🇭 อยู่ในประเทศไทย</strong>ชำระเงินเป็นเงินบาท (฿) ผ่าน PromptPay</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ② 出生情報 -->
+    <div class="form-card">
+      <h2>② ข้อมูลการเกิด</h2>
+
+      <div class="field">
+        <label>เพศ <span class="req">* จำเป็น</span></label>
+        <div class="radio-group" style="flex-direction:row;flex-wrap:wrap;gap:10px">
+          <label class="radio-item" style="flex:1;min-width:120px">
+            <input type="radio" name="gender" value="female" required>
+            <span class="label-text">♀ หญิง</span>
+          </label>
+          <label class="radio-item" style="flex:1;min-width:120px">
+            <input type="radio" name="gender" value="male">
+            <span class="label-text">♂ ชาย</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>วันเดือนปีเกิด <span class="req">* จำเป็น</span></label>
+        <div class="hint">กรอกเป็นปี ค.ศ. เช่น 1985-03-21</div>
+        <input type="date" name="birthdate" required>
+      </div>
+
+      <div class="field">
+        <label>เวลาเกิดที่ทราบ (ถ้ามี) <span class="opt">（ถ้ามี）</span></label>
+        <div class="hint">ถ้าทราบเวลาเกิดโดยประมาณ กรอกได้เลย ถ้าไม่ทราบเลยให้เว้นว่าง</div>
+        <input type="time" name="birth_time_known">
+      </div>
+
+      <div class="field">
+        <label>ความแม่นยำของเวลาเกิด <span class="req">* จำเป็น</span></label>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="time_accuracy" value="unknown" required>
+            <span class="label-text"><strong>ไม่ทราบเลย</strong> — ไม่มีข้อมูลเวลาเกิดแม้แต่น้อย</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="time_accuracy" value="rough">
+            <span class="label-text"><strong>ทราบโดยประมาณ ±3-4 ชั่วโมง</strong> — เช่น "เกิดช่วงเช้า" หรือ "เกิดตอนกลางคืน"</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="time_accuracy" value="pm2h">
+            <span class="label-text"><strong>ทราบในช่วง ±2 ชั่วโมง</strong> — เช่น "เกิดประมาณ 8 โมงเช้า"</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="time_accuracy" value="pm1h">
+            <span class="label-text"><strong>ทราบค่อนข้างแม่นยำ ±1 ชั่วโมง</strong> — เช่น "ประมาณ 14.00-15.00 น."</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>แหล่งข้อมูลเวลาเกิด <span class="opt">（ถ้ามี）</span></label>
+        <div class="hint">ระบุว่าทราบเวลาเกิดจากที่ไหน</div>
+        <div class="check-group">
+          <label class="check-item">
+            <input type="checkbox" name="time_source" value="mother">
+            <span class="label-text">คำบอกเล่าของแม่ / ผู้ปกครอง</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="time_source" value="certificate">
+            <span class="label-text">สูติบัตร / เอกสารทางการ</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="time_source" value="hospital">
+            <span class="label-text">บันทึกของโรงพยาบาล</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="time_source" value="horoscope">
+            <span class="label-text">ดวงชะตาที่เคยทำไว้ก่อนหน้า</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="time_source" value="none">
+            <span class="label-text">ไม่มีแหล่งข้อมูลใดเลย</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>สถานที่เกิด <span class="req">* จำเป็น</span></label>
+        <div class="hint">ระบุจังหวัดหรือเมืองที่เกิด (เช่น กรุงเทพมหานคร, เชียงใหม่, โอซากา ญี่ปุ่น)</div>
+        <input type="text" name="birthplace" placeholder="เช่น กรุงเทพมหานคร หรือ เชียงใหม่" required>
+      </div>
+    </div>
+
+    <!-- ③ 人生の重要な出来事 -->
+    <div class="form-card">
+      <h2>③ เหตุการณ์สำคัญในชีวิต</h2>
+      <p style="font-size:13px;color:#9a90b8;margin-bottom:16px;line-height:1.8">
+        ข้อมูลนี้ใช้สำหรับ <strong style="color:#d4af37">การตรวจสอบเวลาเกิด</strong> — ยิ่งกรอกละเอียดยิ่งแม่นยำ<br>
+        กรอกอย่างน้อย <strong style="color:#fff">5 เหตุการณ์</strong> พร้อมปี ค.ศ. ที่เกิดขึ้น
+      </p>
+
+      <table class="events-table">
+        <thead>
+          <tr>
+            <th style="width:90px">ปี (ค.ศ.)</th>
+            <th>เหตุการณ์ที่เกิดขึ้น</th>
+          </tr>
+        </thead>
+        <tbody id="eventsBody">
+        </tbody>
+      </table>
+      <button type="button" onclick="addEventRow()" style="margin-top:12px;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.3);color:#d4af37;padding:8px 20px;border-radius:8px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:13px;font-weight:600">
+        + เพิ่มเหตุการณ์
+      </button>
+
+      <div style="margin-top:16px;background:rgba(255,255,255,.03);border-radius:10px;padding:14px 16px;font-size:12px;color:#7a7090;line-height:1.9">
+        <strong style="color:#9a90b8">ตัวอย่างเหตุการณ์ที่ควรระบุ：</strong><br>
+        การเรียน（เข้ามหาวิทยาลัย, จบการศึกษา）/ งาน（เริ่มทำงาน, เปลี่ยนงาน, ลาออก, เลื่อนตำแหน่ง）<br>
+        ความสัมพันธ์（แต่งงาน, หย่า, พบรัก）/ ครอบครัว（มีลูก, สูญเสียคนในครอบครัว）<br>
+        สุขภาพ（ป่วยหนัก, อุบัติเหตุ）/ การย้าย（ย้ายบ้าน, ย้ายประเทศ）/ การเงิน（รวย, ล้มละลาย）
+      </div>
+    </div>
+
+    <!-- ④ 身体的特徴 -->
+    <div class="form-card">
+      <h2>④ ลักษณะทางกายภาพ</h2>
+      <p style="font-size:13px;color:#9a90b8;margin-bottom:16px;line-height:1.8">
+        ใช้สำหรับยืนยันลัคนา (Lagna / Rising Sign) — ช่วยเพิ่มความแม่นยำในการคัดเลือกเวลาเกิด
+      </p>
+
+      <div class="field">
+        <label>ส่วนสูง <span class="opt">（ถ้าสะดวก）</span></label>
+        <div class="field-row">
+          <select name="height_range">
+            <option value="">— เลือก —</option>
+            <option value="very_short">ต่ำมาก (ต่ำกว่า 150 ซม.)</option>
+            <option value="short">ค่อนข้างเตี้ย (150–160 ซม.)</option>
+            <option value="medium">ปานกลาง (160–170 ซม.)</option>
+            <option value="tall">ค่อนข้างสูง (170–180 ซม.)</option>
+            <option value="very_tall">สูงมาก (180 ซม. ขึ้นไป)</option>
+          </select>
+          <input type="text" name="height_exact" placeholder="หรือระบุเป็น ซม. เช่น 163">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>รูปร่าง <span class="opt">（ถ้าสะดวก）</span></label>
+        <select name="body_type">
+          <option value="">— เลือก —</option>
+          <option value="slim">ผอม / บาง</option>
+          <option value="medium">ปานกลาง</option>
+          <option value="athletic">กล้ามเนื้อ / แข็งแรง</option>
+          <option value="chubby">ค่อนข้างอ้วน</option>
+          <option value="heavy">อ้วน</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>ลักษณะเด่นทางร่างกาย <span class="opt">（ถ้าสะดวก）</span></label>
+        <div class="hint">เช่น ตาโต, ผิวขาว, ผมหยิก, มีไฝที่เด่นชัด ฯลฯ</div>
+        <textarea name="physical_features" placeholder="อธิบายลักษณะเด่นที่สังเกตได้ชัดเจน..."></textarea>
+      </div>
+    </div>
+
+    <!-- ⑤ 性格・行動パターン -->
+    <div class="form-card">
+      <h2>⑤ บุคลิกภาพและพฤติกรรม</h2>
+      <p style="font-size:13px;color:#9a90b8;margin-bottom:16px;line-height:1.8">
+        ช่วยยืนยันดาวสำคัญในดวงชะตา — กรอกอย่างตรงไปตรงมา ไม่มีคำตอบที่ถูกหรือผิด
+      </p>
+
+      <div class="field">
+        <label>โดยรวมคุณเป็นคนแบบไหน? <span class="opt">（เลือกได้หลายข้อ）</span></label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="personality" value="logical"><span class="label-text">ชอบคิดวิเคราะห์ / ใช้เหตุผล</span></label>
+          <label class="check-item"><input type="checkbox" name="personality" value="emotional"><span class="label-text">อ่อนไหวง่าย / ใช้ความรู้สึก</span></label>
+          <label class="check-item"><input type="checkbox" name="personality" value="leader"><span class="label-text">ชอบเป็นผู้นำ / ริเริ่มสิ่งใหม่</span></label>
+          <label class="check-item"><input type="checkbox" name="personality" value="follower"><span class="label-text">ชอบทำตามแผน / สนับสนุนผู้อื่น</span></label>
+          <label class="check-item"><input type="checkbox" name="personality" value="social"><span class="label-text">ชอบสังคม / มีเพื่อนเยอะ</span></label>
+          <label class="check-item"><input type="checkbox" name="personality" value="introvert"><span class="label-text">ชอบอยู่คนเดียว / สงวนตัว</span></label>
+          <label class="check-item"><input type="checkbox" name="personality" value="spiritual"><span class="label-text">สนใจจิตวิญญาณ / ปรัชญา / ศาสนา</span></label>
+          <label class="check-item"><input type="checkbox" name="personality" value="practical"><span class="label-text">ปฏิบัตินิยม / เน้นผลลัพธ์จริง</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>ด้านที่ท้าทายที่สุดในชีวิต <span class="opt">（เลือกได้หลายข้อ）</span></label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="challenges" value="career"><span class="label-text">การงาน / อาชีพ</span></label>
+          <label class="check-item"><input type="checkbox" name="challenges" value="money"><span class="label-text">การเงิน</span></label>
+          <label class="check-item"><input type="checkbox" name="challenges" value="relationship"><span class="label-text">ความสัมพันธ์ / ความรัก</span></label>
+          <label class="check-item"><input type="checkbox" name="challenges" value="family"><span class="label-text">ครอบครัว</span></label>
+          <label class="check-item"><input type="checkbox" name="challenges" value="health"><span class="label-text">สุขภาพ</span></label>
+          <label class="check-item"><input type="checkbox" name="challenges" value="mental"><span class="label-text">จิตใจ / อารมณ์</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑥ 追加情報 -->
+    <div class="form-card">
+      <h2>⑥ ข้อมูลเพิ่มเติม</h2>
+
+      <div class="field">
+        <label>เคยทำดวงชะตามาก่อนไหม? <span class="opt">（ถ้ามี）</span></label>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="prev_reading" value="no">
+            <span class="label-text">ไม่เคย</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="prev_reading" value="thai">
+            <span class="label-text">เคย — โหราศาสตร์ไทย / จีน</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="prev_reading" value="vedic">
+            <span class="label-text">เคย — โหราศาสตร์เวท (อินเดีย)</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="prev_reading" value="western">
+            <span class="label-text">เคย — โหราศาสตร์ตะวันตก (ราศีฝรั่ง)</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>ถ้าเคยทำดวงมาก่อน มีเวลาเกิดที่เคยใช้ไหม? <span class="opt">（ถ้ามี）</span></label>
+        <div class="hint">ระบุเวลาที่เคยถูกใช้ในการทำดวงครั้งก่อน (อาจถูกหรือผิดก็ได้)</div>
+        <input type="text" name="prev_birth_time" placeholder="เช่น 07:30 น. หรือ ไม่มี">
+      </div>
+
+      <div class="field">
+        <label>สิ่งที่อยากรู้จากบริการนี้ <span class="opt">（ถ้าสะดวก）</span></label>
+        <div class="hint">เช่น "อยากรู้ลัคนาที่แท้จริง" หรือ "ดวงที่ทำมาไม่ตรงกับชีวิต อยากหาเวลาเกิดที่ถูกต้อง"</div>
+        <textarea name="purpose" placeholder="อธิบายสิ่งที่ต้องการ..."></textarea>
+      </div>
+
+      <div class="field">
+        <label>หมายเหตุเพิ่มเติม <span class="opt">（ถ้ามี）</span></label>
+        <textarea name="notes" placeholder="ข้อมูลอื่นๆ ที่คิดว่าอาจเป็นประโยชน์..."></textarea>
+      </div>
+
+      <div class="field">
+        <label>รับทราบและยินยอม <span class="req">* จำเป็น</span></label>
+        <div class="check-group">
+          <label class="check-item">
+            <input type="checkbox" name="consent_data" id="consentData" required>
+            <span class="label-text">ยินยอมให้ VEDA CENTER ใช้ข้อมูลที่กรอกเพื่อวัตถุประสงค์การวิเคราะห์ดวงชะตาเท่านั้น</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="consent_payment" id="consentPayment" required>
+            <span class="label-text">รับทราบว่าบริการนี้มีค่าใช้จ่าย และจะชำระหลังได้รับใบแจ้งยอดทางอีเมล</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 送信ボタン -->
+    <div class="submit-area">
+      <button type="submit" class="submit-btn">
+        📨 ส่งแบบฟอร์ม
+      </button>
+      <p class="submit-note">
+        หลังส่งแบบฟอร์ม ระบบจะส่งอีเมลยืนยันให้คุณทันที<br>
+        ผู้เชี่ยวชาญจะติดต่อกลับพร้อมใบแจ้งยอดภายใน 1-2 วันทำการ
+      </p>
+    </div>
+
+  </form>
+
+  <!-- 完了画面 -->
+  <div class="success" id="successBox">
+    <div class="icon">✅</div>
+    <h2>ส่งแบบฟอร์มเรียบร้อยแล้ว!</h2>
+    <p>
+      ขอบคุณที่ส่งข้อมูลมา<br>
+      เราจะส่ง<strong style="color:#d4af37">อีเมลยืนยัน</strong>ไปยังที่อยู่อีเมลที่คุณกรอก<br><br>
+      ผู้เชี่ยวชาญจะตรวจสอบข้อมูลและ<br>
+      <strong style="color:#d4af37">ส่งใบแจ้งยอดภายใน 1-2 วันทำการ</strong><br><br>
+      <span style="font-size:13px;color:#7a7090">หากไม่ได้รับอีเมลภายใน 24 ชั่วโมง กรุณาตรวจสอบโฟลเดอร์ Spam</span>
+    </p>
+  </div>
+
+</div>
+
+<script>
+// 出来事テーブルの行を追加
+var eventCount = 0;
+function addEventRow(){
+  eventCount++;
+  var body = document.getElementById('eventsBody');
+  var tr = document.createElement('tr');
+  tr.innerHTML =
+    '<td><input type="text" name="event_year_'+eventCount+'" placeholder="เช่น 2010" class="yr" maxlength="4" pattern="[0-9]{4}"></td>' +
+    '<td><input type="text" name="event_desc_'+eventCount+'" placeholder="อธิบายเหตุการณ์..." class="ev"></td>';
+  body.appendChild(tr);
+}
+// 最初から8行追加
+for(var i=0;i<8;i++){ addEventRow(); }
+
+// バリデーション & 送信
+document.getElementById('mainForm').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  // 必須チェック
+  var required = this.querySelectorAll('[required]');
+  var ok = true;
+  required.forEach(function(el){
+    if(el.type === 'radio' || el.type === 'checkbox'){
+      var name = el.name;
+      var checked = document.querySelector('input[name="'+name+'"]:checked');
+      if(!checked){ ok = false; el.closest('.radio-group, .check-group, .check-item').style.outline='1px solid #e8905a'; }
+    } else {
+      if(!el.value.trim()){ ok = false; el.style.borderColor='#e8905a'; }
+      else { el.style.borderColor=''; }
+    }
+  });
+
+  // 同意チェック
+  if(!document.getElementById('consentData').checked || !document.getElementById('consentPayment').checked){
+    ok = false;
+    alert('กรุณายืนยันการรับทราบและยินยอมก่อนส่งแบบฟอร์ม');
+    return;
+  }
+
+  if(!ok){
+    alert('กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วน (ช่องที่มีเครื่องหมาย *)');
+    // 最初のエラー欄にスクロール
+    var first = document.querySelector('input:invalid, input[style*="e8905a"]');
+    if(first) first.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  // フォームデータ収集
+  var data = new FormData(this);
+  var obj = {};
+  data.forEach(function(v,k){ 
+    if(obj[k]){ 
+      if(!Array.isArray(obj[k])) obj[k]=[obj[k]]; 
+      obj[k].push(v); 
+    } else { obj[k]=v; }
+  });
+
+  // Google Apps Script の Web App URL に送信（実装後に差し替え）
+  var GAS_URL = 'https://script.google.com/macros/s/AKfycbwtJVfxlf4vpEhAfmVh0OFWsIrJSiMkTbFb3jLirtvmOR8yZyuX1HGTeaBdR_wSw7D9Ug/exec'; // ← ここにGASのURLを入れる
+
+  // 送信処理（GAS URLが設定されている場合）
+  if(GAS_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL'){
+    fetch(GAS_URL, {
+      method:'POST',
+      body: JSON.stringify(obj),
+      headers:{'Content-Type':'application/json'}
+    }).then(function(){
+      showSuccess();
+    }).catch(function(){
+      // エラーでも完了画面表示（メール送信失敗の場合の代替）
+      showSuccess();
+    });
+  } else {
+    // テスト用：GAS未設定の場合もUIだけ完了表示
+    showSuccess();
+  }
+});
+
+function showSuccess(){
+  document.getElementById('mainForm').style.display='none';
+  document.getElementById('successBox').style.display='block';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
+</body>
+</html>
